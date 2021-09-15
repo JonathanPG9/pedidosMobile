@@ -3,11 +3,8 @@ import { StyleSheet, Text,  Button ,Platform, StatusBar , View} from 'react-nati
 import {Contexto} from "../../Context/Context"
 
 export default function Nav() {
-  const {user} = useContext(Contexto);
   return (
     <View style={styles.container}>
-      <Text>{user.nombre}</Text>
-      <Text>{user.email}</Text>
     </View>
   );
 }

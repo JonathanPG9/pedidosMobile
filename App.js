@@ -9,7 +9,8 @@ import {NavigationContainer} from "@react-navigation/native"
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, Text} from 'react-native';
 import * as Font from 'expo-font';
-
+import 'react-native-gesture-handler';
+import Drawer from "./app/screens/drawer/drawer"
 export default function App() {
   const Stack = createNativeStackNavigator();
   const [fontLoadead,setFontLoadead] = useState(false)
@@ -39,6 +40,15 @@ export default function App() {
       <NavigationContainer>
       <SafeAreaProvider>
           <Stack.Navigator>
+          <Stack.Screen
+            name="home2"
+            component={Drawer}
+            options={
+              {
+                headerShown:false
+              }
+            }
+            />
             <Stack.Screen
             name="home"
             component={Home}

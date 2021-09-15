@@ -11,6 +11,9 @@ import {
 import styled from 'styled-components/native'
 import {Tiendas,Categorias,Settings} from "../../utils/tiendas"
 import { Input, Icon  } from 'react-native-elements';
+import { DrawerContentScrollView,DrawerItemList } from '@react-navigation/drawer';
+import nav from "../../screens/header/Nav"
+
 const { width, height } = Dimensions.get("window");
 const UL = styled.FlatList`
 padding-top:10px;
@@ -193,17 +196,9 @@ export default  Home = ({navigation}) => {
 								backgroundColor: 'rgba(0,0,0,0.8)',
 							}}
 							>
-								<View
-								style={{
-									width: "85%",
-									height,
-									backgroundColor:"#F5F5F5"
-								}}
-								>
-									<Text>
-										Hola
-									</Text>
-								</View>
+                <Text>
+                  Hola
+                </Text>
 							</View>
 						}
             <View
