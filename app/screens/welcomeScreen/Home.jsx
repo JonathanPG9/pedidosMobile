@@ -11,8 +11,6 @@ import {
 import styled from 'styled-components/native'
 import {Tiendas,Categorias,Settings} from "../../utils/tiendas"
 import { Input, Icon  } from 'react-native-elements';
-import { DrawerContentScrollView,DrawerItemList } from '@react-navigation/drawer';
-import nav from "../../screens/header/Nav"
 
 const { width, height } = Dimensions.get("window");
 const UL = styled.FlatList`
@@ -20,7 +18,6 @@ padding-top:10px;
 `
 export default  Home = ({navigation}) => {
     const [selectedCategory, setSelectedCategory] = useState()
-		const [toggleSettings ,setToggleSettings] = useState(false)
     const [tiendas, setTiendas] = useState(Tiendas)
     function selectCategory(categoria) {
         let filterRestaurante = Tiendas.filter(x => x.categorias === categoria.filtro) 
@@ -184,38 +181,20 @@ export default  Home = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.container}>
-					  {
-							toggleSettings && 
-							<View
-							style={{
-								position: "absolute",
-								height,
-								marginTop:25,
-								width,
-								zIndex:120,
-								backgroundColor: 'rgba(0,0,0,0.8)',
-							}}
-							>
-                <Text>
-                  Hola
-                </Text>
-							</View>
-						}
+
             <View
             style={{
-                flex: 0.5,
-                borderBottomWidth:1,
-                borderColor:"#DFDFE0",
-                backgroundColor:"white",
-                justifyContent:'center',
-                paddingTop:15,
-                marginTop:5,
+              flex: 0.5,
+              borderBottomWidth:1,
+              borderColor:"#DFDFE0",
+              backgroundColor:"white",
+              justifyContent:'center',
             }}
             >
                 <View
                 style={{
-                    flex: 0,
-                    width: "65%"
+                  flex: 0,
+                  width: "65%"
                 }}
                 >
                 <Input
@@ -279,9 +258,10 @@ export default  Home = ({navigation}) => {
                             type={item.type} 
                             size={item.size}
                             color='black'
-                            onPress={() => item?.toggleTriger ? setToggleSettings(!toggleSettings) :
-															navigation.navigate(`${item.redirect}`)
-														}
+                            onPress={() => item?.toggleTriger ? navigation.openDrawer() 
+                            :
+                            navigation.navigate(`${item.redirect}`)
+                        }
                             />
                             <Text
                             style={{

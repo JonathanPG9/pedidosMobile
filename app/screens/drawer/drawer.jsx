@@ -7,16 +7,17 @@ const Drawer = createDrawerNavigator();
 
 export default function drawer() {
   return (
-    
-      <Drawer.Navigator 
+      
+      <Drawer.Navigator
+      style={{
+      }}
       screenOptions={{
         headerShown: false,
-        headerStyle: {
-          backgroundColor: 'transparent',
-          elevation: 0,
-          shadowOpacity: 0,
-        },
+        overlayColor: "rgba(0,0,0,0.88)",
         headerTitle: '',
+        drawerStyle: {
+          width: "75%",
+        },
       }}
       drawerContent={(props) => <CustomDrawer {...props}/>}
       >

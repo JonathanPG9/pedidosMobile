@@ -6,28 +6,28 @@ import {
 } from '@react-navigation/drawer';
 import {
   View,
+  StatusBar,
+  SafeAreaView
 } from "react-native";
 
 export default function CustomDrawerContent(props) {
   return (
-    <View
+    <SafeAreaView
     style={{
       flex: 1,
-      backgroundColor:'black'
     }}
     >
+    <StatusBar 
+     backgroundColor="#fff"
+     barStyle="dark-content"
+    />
     <DrawerContentScrollView
       {...props}>
-      <DrawerItemList 
-      {...props}
-      activeBackgroundCOlor="red"
-      labelStyle={{color:"white"}}
-      />
     </DrawerContentScrollView>
     <DrawerItem 
     label="Cerrar sesion"
-    labelStyle={{color:"white"}}
+    labelStyle={{color:"black"}}
     />
-    </View> 
+    </SafeAreaView> 
   );
 }

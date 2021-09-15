@@ -41,17 +41,8 @@ export default function App() {
       <SafeAreaProvider>
           <Stack.Navigator>
           <Stack.Screen
-            name="home2"
-            component={Drawer}
-            options={
-              {
-                headerShown:false
-              }
-            }
-            />
-            <Stack.Screen
             name="home"
-            component={Home}
+            component={Drawer}
             options={
               {
                 headerShown:false
