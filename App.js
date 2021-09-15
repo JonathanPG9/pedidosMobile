@@ -1,21 +1,90 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useEffect,useState} from 'react';
+import Nav from "./app/screens/header/Nav"
+import Home from "./app/screens/welcomeScreen/Home"
+import Context from "./app/Context/Context"
+import Login from "./app/screens/auth/Login"
+import Register from "./app/screens/auth/Register"
+import {SafeAreaProvider} from "react-native-safe-area-context"
+import {NavigationContainer} from "@react-navigation/native"
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text} from 'react-native';
+import * as Font from 'expo-font';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+  const [fontLoadead,setFontLoadead] = useState(false)
+
+  useEffect(() => {
+    const loadFonts = async () =>{
+      await Font.loadAsync({
+        'Bangers': require("./app/assets/fonts/Bangers-Regular.ttf"),
+        'Karantina-Bold': require("./app/assets/fonts/Karantina-Bold.ttf"),
+        'Karantina-Light': require("./app/assets/fonts/Karantina-Light.ttf"),
+        'Karantina-Regular': require("./app/assets/fonts/Karantina-Regular.ttf"),
+        'AlexBrush': require("./app/assets/fonts/AlexBrush-Regular.ttf"),
+      }).then(res=>{
+        console.log('Font familys cargados');
+        setFontLoadead(true)
+      }).catch(Err=>{
+        console.log(`Error al cargar font familys ${Err}`);
+      }); 
+    }
+    loadFonts()
+  },[])
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Context>
+      {fontLoadead
+      ?
+      <NavigationContainer>
+      <SafeAreaProvider>
+          <Stack.Navigator>
+            <Stack.Screen
+            name="home"
+            component={Home}
+            options={
+              {
+                headerShown:false
+              }
+            }
+            />
+            <Stack.Screen
+            name="login"
+            component={Login}
+            options={
+              {
+                headerShown:false
+              }
+            }
+            />
+            <Stack.Screen
+            name="register"
+            component={Register}
+            options={
+              {
+                headerShown:false
+              }
+            }
+            />
+            <Stack.Screen
+            name="nav"
+            component={Nav}
+            options={
+              {
+                headerShown:false
+              }
+            }
+            />
+          </Stack.Navigator>
+      </SafeAreaProvider>
+      </NavigationContainer>
+      :
+      <View>
+        <Text>
+          Cargando...
+        </Text>
+      </View>
+    }
+    </Context>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
