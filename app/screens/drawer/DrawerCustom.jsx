@@ -13,21 +13,21 @@ import {
 export default function CustomDrawerContent(props) {
   return (
     <SafeAreaView
-    style={{
-      flex: 1,
-    }}
+      style={{
+        flex: 1,
+      }}
     >
-    <StatusBar 
-     backgroundColor="#fff"
-     barStyle="dark-content"
-    />
-    <DrawerContentScrollView
-      {...props}>
-    </DrawerContentScrollView>
-    <DrawerItem 
-    label="Cerrar sesion"
-    labelStyle={{color:"black"}}
-    />
-    </SafeAreaView> 
+      <StatusBar
+        backgroundColor="#fff"
+        barStyle="dark-content"
+      />
+      <DrawerContentScrollView
+        {...props}>
+      </DrawerContentScrollView>
+      <DrawerItem
+        label="Cerrar sesion"
+        labelStyle={{ color: "black" }}
+      />
+    </SafeAreaView>
   );
 }

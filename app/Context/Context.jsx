@@ -1,17 +1,20 @@
-import React,{createContext,useState} from 'react';
-import {callApiUsers, logueando,register} from "../utils/fetching"
+import React, { createContext, useState } from 'react';
+import { callApiUsers, logueando, register } from "../utils/fetching"
 
 export const Contexto = createContext()
 
-const Context = ({children}) => {
-  
-  const [USUARIO,setUSUARIO] = useState([])
-  const [isLogged,setIsLogged] = useState()
-  const logeando = (name,pass,fn) => {
-      logueando.post({
-        nombre:name,
-        password:pass}
-      )
+const Context = ({ children }) => {
+
+  const [USUARIO, setUSUARIO] = useState([])
+  const [isLogged, setIsLogged] = useState()
+  const [callKeyboard, setCallKeyboard] = useState(false)
+
+  const logeando = (name, pass, fn) => {
+    logueando.post({
+      nombre: name,
+      password: pass
+    }
+    )
       .then(data => {
         setUSUARIO(data["data"])
         setIsLogged(true)
@@ -23,31 +26,33 @@ const Context = ({children}) => {
         alert("Datos erroneos")
       })
   }
-  const registrando = (name,pass,email,numero) => {
+  const registrando = (name, pass, email, numero) => {
     register.post({
-      nombre:name,
-      password:pass,
+      nombre: name,
+      password: pass,
       email: email,
       numero: numero
     }
     )
-    .then(data => {
-      setUSUARIO(data["data"])
-      setIsLogged(true)
-    })
-    .catch(err => {
-      setIsLogged(false)
-      console.log(err)
-      alert("Datos erroneos")
-    })
-}
+      .then(data => {
+        setUSUARIO(data["data"])
+        setIsLogged(true)
+      })
+      .catch(err => {
+        setIsLogged(false)
+        console.log(err)
+        alert("Datos erroneos")
+      })
+  }
   const context = {
     registrando: registrando,
     logeando: logeando,
     isLogged: isLogged,
     User: USUARIO,
+    callKeyboard : callKeyboard,
+    setCallKeyboard : setCallKeyboard
   }
-  return ( 
+  return (
     <Contexto.Provider value={context}>
       {children}
     </Contexto.Provider>

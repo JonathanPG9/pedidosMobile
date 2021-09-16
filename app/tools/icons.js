@@ -16,19 +16,19 @@ export const carniceria = require("../assets/icons/carniceria.png");
 
 
 export default {
-    back,
-    donut,
-    drink,
-    fire,
-    fries,
-    hamburger,
-    hotdog,
-    like,
-    noodle,
-    pizza,
-    rice_bowl,
-    salad,
-    star,
-    sushi,
-    carniceria
+  back,
+  donut,
+  drink,
+  fire,
+  fries,
+  hamburger,
+  hotdog,
+  like,
+  noodle,
+  pizza,
+  rice_bowl,
+  salad,
+  star,
+  sushi,
+  carniceria
 }

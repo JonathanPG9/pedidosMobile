@@ -1,7 +1,10 @@
-import { icons, images,} from '../tools'
+import {
+  icons,
+  images,
+} from '../tools'
 
 
-export const Categorias = [ 
+export const Categorias = [
   {
     id: 4,
     nombre: "Pancho",
@@ -9,9 +12,9 @@ export const Categorias = [
     icon: icons.hotdog,
   },
   {
-    id:5,
+    id: 5,
     nombre: "Verduleria",
-    filtro:"verduleria",
+    filtro: "verduleria",
     icon: icons.salad,
   },
   {
@@ -29,33 +32,34 @@ export const Categorias = [
   {
     id: 8,
     nombre: "Mac",
-    filtro:"macdonal",
+    filtro: "macdonal",
     icon: icons.fries,
   },
   {
     id: 9,
     nombre: "Carniceria",
-    filtro:"carniceria",
+    filtro: "carniceria",
     icon: icons.carniceria,
   }
 ]
 
-export const Tiendas = [
-  {
+export const Tiendas = [{
     id: 1,
     nombreProductos: "La birra",
     rating: 4.8,
     categorias: "hamburguesas",
     foto: images.burger_restaurant_1,
-    nombre: "Hola",
+    nombre: "Los Sementales",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   },
   {
     id: 2,
     rating: 4.8,
     categorias: "pizzerias",
     foto: images.pizza_restaurant,
+    nombreProductos: "Pizzas",
     nombre: "El Napoles",
-    nombreProductos:"Pizzas",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   },
   {
     id: 3,
@@ -64,6 +68,7 @@ export const Tiendas = [
     categorias: "panchos",
     foto: images.hot_dog_restaurant,
     nombre: "El paragua",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   },
   {
     id: 4,
@@ -72,6 +77,7 @@ export const Tiendas = [
     categorias: "sushi",
     foto: images.japanese_restaurant,
     nombre: "Japones",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   },
   {
     id: 5,
@@ -80,6 +86,7 @@ export const Tiendas = [
     categorias: "fideos",
     foto: images.noodle_shop,
     nombreProductos: "Tallarines",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   },
   {
     id: 6,
@@ -88,13 +95,13 @@ export const Tiendas = [
     categorias: 'heladeria',
     foto: images.heladeria,
     nombreProductos: "Helado de avellaneda",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
   }
 ]
 
-export const Settings = [ 
-  {
+export const Settings = [{
     id: 1,
-    redirect:"home",
+    redirect: "Home",
     type: 'font-awesome',
     nombre: "Inicio",
     filtro: "home",
@@ -102,7 +109,7 @@ export const Settings = [
   },
   {
     id: 2,
-    redirect:"register",
+    redirect: "search",
     type: 'font-awesome',
     nombre: "Buscar",
     size: 17,
@@ -110,7 +117,7 @@ export const Settings = [
   },
   {
     id: 3,
-    redirect:"login",
+    redirect: "login",
     type: 'font-awesome',
     nombre: "Ayuda",
     filtro: "info",
@@ -118,7 +125,7 @@ export const Settings = [
   },
   {
     id: 4,
-    toggleTriger:true,
+    toggleTriger: true,
     type: 'font-awesome',
     nombre: "Perfil",
     filtro: "user",

@@ -1,8 +1,8 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Rutas from  "./Rutas"
-import Home from "../../screens/welcomeScreen/Home"
+import Home from "../inicio/Home"
 import CustomDrawer from "./DrawerCustom"
+import Search from "../search/searchScreen"
 const Drawer = createDrawerNavigator();
 
 export default function drawer() {
@@ -22,6 +22,7 @@ export default function drawer() {
       drawerContent={(props) => <CustomDrawer {...props}/>}
       >
         <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="search" component={Search} />
         </Drawer.Navigator>
   );
 }
