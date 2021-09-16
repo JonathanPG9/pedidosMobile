@@ -6,7 +6,7 @@ import { Contexto } from "../../Context/Context";
 
 export default inputSearch = () => {
   const navigation = useNavigation()
-  const {setCallKeyboard} = useContext(Contexto)
+  const {setCallKeyboard,callKeyboard} = useContext(Contexto)
   return (
     <TouchableOpacity
       style={{
@@ -17,8 +17,8 @@ export default inputSearch = () => {
         justifyContent: 'center',
       }}
       onPress={() =>  {
-        setCallKeyboard(false)
         navigation.navigate("search")
+        setCallKeyboard(!callKeyboard)
       }}
     >
       <View

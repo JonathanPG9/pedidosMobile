@@ -11,13 +11,12 @@ const { width } = Dimensions.get("window");
 
 const Search = () => {
   const input = React.createRef()
-  const {callKeyboard,setCallKeyboard} = useContext(Contexto)
+  const {callKeyboard} = useContext(Contexto)
 
   useEffect(() => {
     setTimeout(() => {
       input.current?.focus()
-      setCallKeyboard(true)
-    },116)
+    },40)
   },[callKeyboard])
   return ( 
     <KeyboardAvoidingView 
