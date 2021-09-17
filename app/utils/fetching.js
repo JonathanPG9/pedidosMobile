@@ -1,5 +1,5 @@
 import FetchingData  from "./fetchData";
 
-export const callApiUsers = new FetchingData("https://altoque-ambiente-dev.herokuapp.com/","api/usuarios")
-export const logueando = new FetchingData("https://altoque-ambiente-dev.herokuapp.com/","api/login")
-export const register = new FetchingData("https://altoque-ambiente-dev.herokuapp.com/","api/register")
+export const callApiUsers = new FetchingData("http://192.168.100.222:3000/","api/usuarios")
+export const logueando = new FetchingData("http://192.168.100.222:3000/","api/login")
+export const register = new FetchingData("http://192.168.100.222:3000/","api/register")

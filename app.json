@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pedidos-front",
-    "slug": "pedidos-front",
+    "name": "pedidos-front-DevEnv",
+    "slug": "pedidos-front-devenv",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

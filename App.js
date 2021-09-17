@@ -40,6 +40,15 @@ export default function App() {
         <NavigationContainer>
           <SafeAreaProvider>
             <Stack.Navigator>
+            <Stack.Screen
+                name="home"
+                component={Drawer}
+                options={
+                  {
+                    headerShown: false
+                  }
+                }
+              />
               <Stack.Screen
                 name="login"
                 component={Login}
@@ -52,15 +61,6 @@ export default function App() {
               <Stack.Screen
                 name="register"
                 component={Register}
-                options={
-                  {
-                    headerShown: false
-                  }
-                }
-              />
-              <Stack.Screen
-                name="home"
-                component={Drawer}
                 options={
                   {
                     headerShown: false

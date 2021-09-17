@@ -1,4 +1,4 @@
-import React, { useEffect,useContext} from 'react';
+import React, { useEffect,useContext, useState} from 'react';
 import { View,SafeAreaView ,Text, FlatList, Dimensions, Image,TouchableOpacity, KeyboardAvoidingView,Platform , Keyboard} from "react-native";
 import SearchInput from "./inputSearch"
 import Footer from "../footer/Footer"
@@ -12,12 +12,33 @@ const { width } = Dimensions.get("window");
 const Search = () => {
   const input = React.createRef()
   const {callKeyboard} = useContext(Contexto)
+  const [inputValue,setInputValue] = useState("")
+  const [filtrarTiendas, setFiltrarTiendas] = useState(Tiendas)
+
+  const searchInput = (value) => {
+    setInputValue(value)
+    const newTiendas = []
+    for(let i = 0; i < Tiendas.length;i++){
+      if (Tiendas[i].nombre.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1 ||
+          Tiendas[i].categorias.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1 ||
+          Tiendas[i].barrio.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1
+      ){
+        newTiendas.push(Tiendas[i])
+        setFiltrarTiendas(newTiendas)
+      }
+      }
+      if(!value?.trim() || value.length === 0){
+        return setFiltrarTiendas(Tiendas)
+      }
+    }
+
 
   useEffect(() => {
     setTimeout(() => {
       input.current?.focus()
     },40)
   },[callKeyboard])
+
   return ( 
     <KeyboardAvoidingView 
     style={{
@@ -57,6 +78,9 @@ const Search = () => {
             top: 5,
             paddingLeft: 20,
           }}
+          onChangeText={(text) => {
+            searchInput(text)
+          }}
           placeholder="Buscar negocios..."
           rightIcon={
             <Icon
@@ -85,7 +109,7 @@ const Search = () => {
           width,
         }}
         showsVerticalScrollIndicator={false}
-        data={Tiendas}
+        data={filtrarTiendas}
         keyExtractor={item => `${item.id}`}
         renderItem={({item}) => {
           return(
@@ -117,7 +141,7 @@ const Search = () => {
                 marginTop:5,
               }}
               >
-                Rural
+                {item.barrio}
               </Text>
             </TouchableOpacity>
               <View

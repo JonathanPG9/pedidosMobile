@@ -45,12 +45,13 @@ export const Categorias = [
 
 export const Tiendas = [{
     id: 1,
-    nombreProductos: "La birra",
+    nombreProductos: "hamburguesas",
     rating: 4.8,
     categorias: "hamburguesas",
     foto: images.burger_restaurant_1,
-    nombre: "Los Sementales",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    nombre: "La Birra",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Retiro"
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ export const Tiendas = [{
     foto: images.pizza_restaurant,
     nombreProductos: "Pizzas",
     nombre: "El Napoles",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Retiro"
   },
   {
     id: 3,
@@ -68,7 +70,8 @@ export const Tiendas = [{
     categorias: "panchos",
     foto: images.hot_dog_restaurant,
     nombre: "El paragua",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Palermo"
   },
   {
     id: 4,
@@ -77,7 +80,8 @@ export const Tiendas = [{
     categorias: "sushi",
     foto: images.japanese_restaurant,
     nombre: "Japones",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Puerto Madero"
   },
   {
     id: 5,
@@ -86,7 +90,8 @@ export const Tiendas = [{
     categorias: "fideos",
     foto: images.noodle_shop,
     nombreProductos: "Tallarines",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Chino"
   },
   {
     id: 6,
@@ -95,7 +100,8 @@ export const Tiendas = [{
     categorias: 'heladeria',
     foto: images.heladeria,
     nombreProductos: "Helado de avellaneda",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."'
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Belgrano"
   }
 ]
 

@@ -16,7 +16,7 @@ import { DrawerActions } from '@react-navigation/native';
 
 export default function CustomDrawerContent(props) {
   String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+    return this.charAt(0).toLocaleUpperCase() + this.slice(1)
 }
   const navigation = useNavigation()
   const {User} = useContext(Contexto)
@@ -49,7 +49,6 @@ export default function CustomDrawerContent(props) {
               fontSize:25
             }}
             >
-              {User.nombre.capitalize()}
             </Text>
           </View>
       </DrawerContentScrollView>
