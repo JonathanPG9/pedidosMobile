@@ -7,37 +7,42 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  ScrollView
 } from "react-native";
 import styled from 'styled-components/native'
 import { Tiendas, Categorias } from "../../utils/tiendas"
 import Search from "../search/inputSearch"
 import Footer from "../footer/Footer"
-const { width } = Dimensions.get("window");
 const UL = styled.FlatList`
 padding-top:10px;
 `
 export default Home = () => {
   const [selectedCategory, setSelectedCategory] = useState()
   const [tiendas, setTiendas] = useState(Tiendas)
+  const [largo,setLargo] = useState(Math.ceil(Tiendas.length / 2))
   const selectCategory = (categoria) => {
     let filterRestaurante = Tiendas.filter(x => x.categorias === categoria.filtro)
     setTiendas(filterRestaurante)
+    setLargo(filterRestaurante.length  < 3 ? 50 : Math.ceil(filterRestaurante.length / 2))
     setSelectedCategory(categoria)
   }
+
   function renderCategorias() {
     return (
       <View
         style={{
-          flex: 0.74,
-          alignItems: "center",
-          justifyContent: 'center',
+          flex: 0.70,
         }}
       >
+        <View
+        style={{
+          flexDirection:'row',
+          marginTop:13,
+        }}
+        >
         <Text
           style={{
-            alignSelf: "flex-start",
-            marginLeft: 15,
-            marginTop: 10,
+            marginLeft:15,
             fontSize: 30,
             color: "#5D5D5D",
             fontFamily: "Karantina-Bold",
@@ -45,6 +50,26 @@ export default Home = () => {
         >
           Secciones
         </Text>
+        {
+        selectedCategory && 
+                <Text
+                style={{
+                  alignSelf:'center',
+                  fontSize: 11,
+                  color: "#5D5D5D",
+                  position: 'absolute',
+                  right: 10,
+                }}
+                onPress={() => {
+                  setTiendas(Tiendas)
+                  setLargo(Math.ceil(Tiendas.length / 2))
+                  setSelectedCategory(false)
+                }}
+                >
+                  Limpiar Filtros
+              </Text>
+        }
+        </View>
         <UL
           data={Categorias}
           horizontal
@@ -62,8 +87,8 @@ export default Home = () => {
               >
                 <View
                   style={{
-                    width: 53,
-                    height: 53,
+                    width: 45,
+                    height: 45,
                     borderRadius: 25,
                     alignItems: "center",
                     justifyContent: "center",
@@ -73,8 +98,8 @@ export default Home = () => {
                   <Image
                     source={item.icon}
                     style={{
-                      width: 33,
-                      height: 33
+                      width: 30,
+                      height: 30
                     }}
                   />
                 </View>
@@ -98,58 +123,59 @@ export default Home = () => {
     return (
       <View
         style={{
-          flex: 1.6,
+          flex: 1.7,
         }}
       >
         <Text
           style={{
-            alignSelf: "flex-start",
             marginLeft: 15,
             marginTop: 10,
+            paddingVertical:2,
             fontSize: 35,
             color: "rgb(229,097,00)",
             fontFamily: "Karantina-Bold",
+            top: 3,
           }}
         >
           Restaurantes
         </Text>
+        <ScrollView
+        horizontal
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false} 
+        >
         <UL
+          key={largo}
           data={tiendas}
-          keyExtractor={item => `${item.id}`}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={{
-            width
-          }}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={item => item.id.toString()}
+          numColumns={largo}
           renderItem={({ item }) => (
             <View
               style={{
-                marginRight: 5,
-                marginLeft: 5
+                padding: 6,
+                justifyContent:'center',
+              alignItems:'center'
               }}
             >
-              <View
-                style={{
-                }}
-              >
                 <Image
                   source={item.foto}
                   resizeMode="cover"
                   style={{
-                    width: 250,
-                    height: 220,
-                    borderRadius: 40,
+                    width: 150,
+                    height: 100,
+                    borderRadius: 15,
                   }}
                 />
                 <View
                   style={{
                     position: 'absolute',
-                    bottom: 0,
-                    height: 50,
-                    width: "85%",
+                    bottom: 5,
+                    height: 20,
+                    width: "80%",
                     backgroundColor: "white",
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 40,
+                    borderTopRightRadius:50,
+                    borderTopLeftRadius:50,
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: "row"
@@ -158,23 +184,22 @@ export default Home = () => {
                   <Image
                     source={require("../../assets/icons/star.png")}
                     style={{
-                      height: 20,
-                      width: 20,
+                      height: 13,
+                      width: 13,
                       tintColor: "rgb(229,097,00)",
                     }}
                   />
                   <Text
                     style={{
                       marginLeft: 10,
-                      fontFamily: "AlexBrush",
-                      fontSize: 25,
+                      fontSize: 13,
                     }}
                   >{item.nombre}</Text>
                 </View>
               </View>
-            </View>
           )}
         />
+        </ScrollView>
       </View>
     )
   }

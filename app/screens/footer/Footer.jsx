@@ -17,8 +17,7 @@ export default Footer = () => {
   return(
     <KeyboardAvoidingView
     style={{
-      flex:0.42,
-      justifyContent:'center',
+      flex:0.31,
       alignItems:'center',
     }}
     enabled

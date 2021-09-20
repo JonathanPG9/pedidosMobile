@@ -9,7 +9,6 @@ import { View, Text } from 'react-native';
 import * as Font from 'expo-font';
 import 'react-native-gesture-handler';
 import Drawer from "./app/screens/drawer/drawer"
-import Search from "./app/screens/search/searchScreen"
 
 export default function App() {
   const Stack = createNativeStackNavigator();

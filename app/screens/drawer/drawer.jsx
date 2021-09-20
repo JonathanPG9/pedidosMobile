@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from "../inicio/Home"
 import CustomDrawer from "./DrawerCustom"
 import Search from "../search/searchScreen"
+import UserData from "../user/UserData"
 const Drawer = createDrawerNavigator();
 
 export default function drawer() {
@@ -16,13 +17,14 @@ export default function drawer() {
         overlayColor: "rgba(0,0,0,0.88)",
         headerTitle: '',
         drawerStyle: {
-          width: "75%",
+          width: "65%",
         },
       }}
       drawerContent={(props) => <CustomDrawer {...props}/>}
       >
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="search" component={Search} />
+        <Drawer.Screen name="userData" component={UserData} />
         </Drawer.Navigator>
   );
 }

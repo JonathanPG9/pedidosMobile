@@ -134,6 +134,7 @@ const Search = () => {
                 height: 66,
                 borderRadius:40,
               }}
+              resizeMode="cover"
               source={item.foto}
               />
               <Text

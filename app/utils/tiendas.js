@@ -26,7 +26,7 @@ export const Categorias = [
   {
     id: 7,
     nombre: "Pizza",
-    filtro: "pizzerias",
+    filtro: "pizzeria",
     icon: icons.pizza,
   },
   {
@@ -56,7 +56,7 @@ export const Tiendas = [{
   {
     id: 2,
     rating: 4.8,
-    categorias: "pizzerias",
+    categorias: "pizzeria",
     foto: images.pizza_restaurant,
     nombreProductos: "Pizzas",
     nombre: "El Napoles",
@@ -94,7 +94,47 @@ export const Tiendas = [{
     barrio:"Chino"
   },
   {
-    id: 6,
+    id: 221,
+    nombre: "Grido",
+    rating: 4.9,
+    categorias: 'pizzeria',
+    foto: images.heladeria,
+    nombreProductos: "Helado de avellaneda",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Belgrano"
+  }, 
+  {
+    id: 9,
+    nombre: "Grido",
+    rating: 4.9,
+    categorias: 'heladeria',
+    foto: images.heladeria,
+    nombreProductos: "Helado de avellaneda",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Belgrano"
+  },
+  {
+    id: 8,
+    nombre: "Grido",
+    rating: 4.9,
+    categorias: 'heladeria',
+    foto: images.heladeria,
+    nombreProductos: "Helado de avellaneda",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Belgrano"
+  },
+  {
+    id: 232,
+    nombre: "Grido",
+    rating: 4.9,
+    categorias: 'heladeria',
+    foto: images.heladeria,
+    nombreProductos: "Helado de avellaneda",
+    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+    barrio:"Belgrano"
+  },
+  {
+    id: 42,
     nombre: "Grido",
     rating: 4.9,
     categorias: 'heladeria',
