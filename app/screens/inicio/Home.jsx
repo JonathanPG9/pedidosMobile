@@ -13,10 +13,14 @@ import styled from 'styled-components/native'
 import { Tiendas, Categorias } from "../../utils/tiendas"
 import Search from "../search/inputSearch"
 import Footer from "../footer/Footer"
+import { useNavigation } from '@react-navigation/native';
+
 const UL = styled.FlatList`
 padding-top:10px;
 `
 export default Home = () => {
+  const navigation = useNavigation()
+
   const [selectedCategory, setSelectedCategory] = useState()
   const [tiendas, setTiendas] = useState(Tiendas)
   const [largo,setLargo] = useState(Math.ceil(Tiendas.length / 2))
@@ -151,12 +155,15 @@ export default Home = () => {
           keyExtractor={item => item.id.toString()}
           numColumns={largo}
           renderItem={({ item }) => (
-            <View
+            <TouchableOpacity
               style={{
                 padding: 6,
                 justifyContent:'center',
               alignItems:'center'
               }}
+              onPress={() => navigation.navigate("Restaurante",{
+                item
+              })}
             >
                 <Image
                   source={item.foto}
@@ -196,7 +203,7 @@ export default Home = () => {
                     }}
                   >{item.nombre}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
           )}
         />
         </ScrollView>
