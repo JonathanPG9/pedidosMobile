@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, KeyboardAvoidingView, Text } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Text, Platform,View} from 'react-native';
 import styled from 'styled-components/native'
 import { Contexto } from "../../Context/Context"
-import { Input, Button } from 'react-native-elements';
+import { Input, Button , Icon} from 'react-native-elements';
 
 const CntPadre = styled.View`
 flex: 1;
@@ -15,30 +15,26 @@ const ImgCnt = styled.ImageBackground`
   align-items: center;
 `
 const CntInput = styled.View`
-  width: 50%;
+  width: 80%;
   position: relative;
-  bottom:55px;
+  bottom: 20px;
 `
 const CntRegistro = styled.View`
   position: absolute;
-  align-self: flex-end;
-  justify-content: center;
-  align-items: center;
-  bottom: 30px;
+  bottom: 15px;
   right:  10px;
 `
-
-
 const SubmitButton = styled.TouchableHighlight`
 align-items: center;
 `
-
 export default function Login({ navigation }) {
   const { logeando } = useContext(Contexto)
   const [valuePass, setValuePass] = useState("");
   const [valueName, setValueName] = useState("")
+  const [lockPass,setLockPass] = useState(false)
+  const [errorText,setErrorText] = useState("")
   const submit = () => {
-    logeando(valueName.toLocaleLowerCase(), valuePass.toLocaleLowerCase(), navigation.navigate)
+    logeando(valueName.toLocaleLowerCase(), valuePass.toLocaleLowerCase(), navigation.navigate,setErrorText)
     setValueName("")
     setValuePass("")
   }
@@ -46,36 +42,72 @@ export default function Login({ navigation }) {
     <KeyboardAvoidingView
     style={{
       flex: 1,
-    }}
-    behavior='height'
+    }} 
+    enabled
+    behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
     <CntPadre >
-      <ImgCnt source={require('../../assets/welcome.jpeg')} >
+      <ImgCnt source={require('../../assets/welcome.jpg')} >
         <CntInput>
           <Input
-            onChangeText={valueName => setValueName(valueName)}
-            placeholder="Usuario"
-            placeholderTextColor="white"
+            onChangeText={valueName =>{
+            setErrorText("")
+            setValueName(valueName)}
+            }
+            labelStyle={{
+              fontSize:12,
+              top:11,
+              color:"white"
+            }}
+            label="Correo Electronico"
             style={styles.input}
             value={valueName}
             inputContainerStyle={{
-              borderBottomColor: "white"
+              borderBottomColor: "white",
             }}
           />
           <Input
-            placeholder="Contraseña"
-            placeholderTextColor="white"
-            onChangeText={text => setValuePass(text)}
+            labelStyle={{
+              fontSize:12,
+              top:11,
+              color:"white"
+            }}
+            label="Contraseña"
+            errorMessage={errorText}
+            onChangeText={valuePass =>{
+              setErrorText("")
+              setValuePass(valuePass)}
+            }
             value={valuePass}
             inputContainerStyle={{
               borderBottomColor: "white"
             }}
             style={styles.input}
-            secureTextEntry={true}
+            secureTextEntry={lockPass ? false : true}
+            rightIcon={ 
+            <Icon
+            onPress={() => setLockPass(!lockPass)}
+            style={{
+              marginTop: -2,
+              marginRight: 20,
+            }}
+            type = 'font-awesome'
+            name = {lockPass ? 'eye' : 'eye-slash'}
+            color ='white'
+          />}
           />
-          <SubmitButton >
+          <Text
+          style={{
+            alignSelf:'center',
+            color: "white",
+            top: -6,
+          }}
+          >
+            Haz olvidado tu contraseña?
+          </Text>
+          <SubmitButton > 
             <Button
-              title="Ingresar"
+              title="Listo"
               containerStyle={{
                 backgroundColor: "rgb(229,097,00)",
               }}
@@ -93,12 +125,6 @@ export default function Login({ navigation }) {
         </CntInput>
         <CntRegistro>
           <Text
-            onPress={() => navigation.navigate("register")}
-            style={styles.textRegister}
-          >
-            ¿Sin cuenta?
-          </Text>
-          <Text
             style={styles.textRegister}
             onPress={() => navigation.navigate("register")}
           >
@@ -114,9 +140,9 @@ export default function Login({ navigation }) {
 
 const styles = StyleSheet.create({
   input: {
-    height: 30,
     color: "white",
-    padding: 5,
+    fontSize:14,
+    padding:2,
   },
   textRegister: {
     fontSize: 20,

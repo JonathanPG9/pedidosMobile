@@ -9,40 +9,39 @@ const Context = ({ children }) => {
   const [isLogged, setIsLogged] = useState()
   const [callKeyboard, setCallKeyboard] = useState(false)
 
-  const logeando = (name, pass, fn) => {
+  const logeando = async (email, pass, fn,setErrorText) => {
     logueando.post({
-      nombre: name,
+      email: email,
       password: pass
-    }
-    )
-      .then(data => {
-        setUSUARIO(data["data"])
-        setIsLogged(true)
-        fn("home")
-      })
-      .catch(err => {
-        setIsLogged(false)
-        console.log(err)
-        alert("Datos erroneos")
-      })
+    })
+    .then(data => {
+/*       setUSUARIO(data["data"])
+ */   setIsLogged(true)
+      fn("home")
+      setErrorText("")
+      console.log(data)
+    })
+    .catch(err => {
+      setIsLogged(false)
+      setErrorText("Email y/o password invalidos")
+    })
   }
-  const registrando = (name, pass, email, numero) => {
+  const registrando = (name, pass, email, telefono, edad, fn,setErrorText) => {
     register.post({
       nombre: name,
       password: pass,
       email: email,
-      numero: numero
-    }
-    )
-      .then(data => {
-        setUSUARIO(data["data"])
-        setIsLogged(true)
-      })
-      .catch(err => {
-        setIsLogged(false)
-        console.log(err)
-        alert("Datos erroneos")
-      })
+      telefono: telefono,
+      edad: edad 
+    })
+    .then(data => {
+      fn("login")
+      setErrorText("")
+    })
+    .catch(err => {
+      setIsLogged(false)
+      setErrorText(err?.response?.data)
+    })
   }
   const context = {
     registrando: registrando,

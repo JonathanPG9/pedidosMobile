@@ -51,7 +51,33 @@ export const Tiendas = [{
     foto: images.burger_restaurant_1,
     nombre: "La Birra",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Retiro"
+    barrio:"Retiro",
+    comidas:[
+      {
+        nombreDePlato: "Hamburguesa Doble Cheddar",
+        precio : 100,
+        id:1,
+        imgPlato:images.burger_restaurant_1
+      },
+      {
+        nombreDePlato: "Hamburguesa Panceta y huevo",
+        precio : 100,
+        id:2,
+        imgPlato:images.burger_restaurant_1
+      },
+      {
+        nombreDePlato: "Hamburguesa Vegana",
+        precio : 100,
+        id:3,
+        imgPlato:images.burger_restaurant_1
+      },
+      {
+        nombreDePlato: "Hamburguesa Con Guacamole",
+        precio : 100,
+        id:4,
+        imgPlato:images.burger_restaurant_1
+      }
+    ]
   },
   {
     id: 2,
@@ -61,7 +87,33 @@ export const Tiendas = [{
     nombreProductos: "Pizzas",
     nombre: "El Napoles",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Retiro"
+    barrio:"Retiro",
+    comidas:[
+      {
+        nombreDePlato: "Pizza Jamon y queso",
+        precio : 100,
+        id:1,
+        imgPlato:images.pizza_restaurant
+      },
+      {
+        nombreDePlato: "Pizza Rucula",
+        precio : 100,
+        id:2,
+        imgPlato:images.pizza_restaurant
+      },
+      {
+        nombreDePlato: "Pizza Fugazzeta",
+        precio : 100,
+        id:3,
+        imgPlato:images.pizza_restaurant
+      },
+      {
+        nombreDePlato: "Pizza Fugazeta Rellena",
+        precio : 100,
+        id:4,
+        imgPlato:images.pizza_restaurant
+      }
+    ]
   },
   {
     id: 3,
@@ -71,7 +123,33 @@ export const Tiendas = [{
     foto: images.hot_dog_restaurant,
     nombre: "El paragua",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Palermo"
+    barrio:"Palermo",
+    comidas:[
+      {
+        nombreDePlato: "Pancho con cheddar",
+        precio : 100,
+        id:1,
+        imgPlato:images.hot_dog_restaurant
+      },
+      {
+        nombreDePlato: "Pancho clasico",
+        precio : 100,
+        id:2,
+        imgPlato:images.hot_dog_restaurant
+      },
+      {
+        nombreDePlato: "Pancho con lluvia de papas",
+        precio : 100,
+        id:3,
+        imgPlato:images.hot_dog_restaurant
+      },
+      {
+        nombreDePlato: "Pancho Gourmet",
+        precio : 100,
+        id:4,
+        imgPlato:images.hot_dog_restaurant
+      }
+    ]
   },
   {
     id: 4,
@@ -81,7 +159,33 @@ export const Tiendas = [{
     foto: images.japanese_restaurant,
     nombre: "Japones",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Puerto Madero"
+    barrio:"Puerto Madero",
+    comidas:[
+      {
+        nombreDePlato: "Sushi Uramaki",
+        precio : 100,
+        id:1,
+        imgPlato:images.japanese_restaurant
+      },
+      {
+        nombreDePlato: "Sushi Temaki",
+        precio : 100,
+        id:2,
+        imgPlato:images.japanese_restaurant
+      },
+      {
+        nombreDePlato: "Sushi Inari",
+        precio : 100,
+        id:3,
+        imgPlato:images.japanese_restaurant
+      },
+      {
+        nombreDePlato: "Sushi Maki",
+        precio : 100,
+        id:4,
+        imgPlato:images.japanese_restaurant
+      }
+    ]
   },
   {
     id: 5,
@@ -91,58 +195,70 @@ export const Tiendas = [{
     foto: images.noodle_shop,
     nombreProductos: "Tallarines",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Chino"
+    barrio:"Chino",
+    comidas:[
+      {
+        nombreDePlato: "Ravioles",
+        precio : 100,
+        id:1,
+        imgPlato:images.noodle_shop
+      },
+      {
+        nombreDePlato: "Spaghetti",
+        precio : 100,
+        id:2,
+        imgPlato:images.noodle_shop
+      },
+      {
+        nombreDePlato: "Macarrones",
+        precio : 100,
+        id:3,
+        imgPlato:images.noodle_shop
+      },
+      {
+        nombreDePlato: "Fusilli ",
+        precio : 100,
+        id:4,
+        imgPlato:images.noodle_shop
+      }
+    ]
   },
   {
-    id: 221,
+    id: 6,
     nombre: "Grido",
     rating: 4.9,
-    categorias: 'pizzeria',
+    categorias: 'helados',
     foto: images.heladeria,
     nombreProductos: "Helado de avellaneda",
     descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Belgrano"
-  }, 
-  {
-    id: 9,
-    nombre: "Grido",
-    rating: 4.9,
-    categorias: 'heladeria',
-    foto: images.heladeria,
-    nombreProductos: "Helado de avellaneda",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Belgrano"
+    barrio:"Belgrano",
+    comidas:[
+      {
+        nombreDePlato: "Helado chocolate",
+        precio : 100,
+        id:1,
+        imgPlato:images.heladeria
+      },
+      {
+        nombreDePlato: "Helado Vainilla",
+        precio : 100,
+        id:2,
+        imgPlato:images.heladeria
+      },
+      {
+        nombreDePlato: "Helado Frutilla",
+        precio : 100,
+        id:3,
+        imgPlato:images.heladeria
+      },
+      {
+        nombreDePlato: "Helado Crema Americana",
+        precio : 100,
+        id:4,
+        imgPlato:images.heladeria
+      }
+    ]
   },
-  {
-    id: 8,
-    nombre: "Grido",
-    rating: 4.9,
-    categorias: 'heladeria',
-    foto: images.heladeria,
-    nombreProductos: "Helado de avellaneda",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Belgrano"
-  },
-  {
-    id: 232,
-    nombre: "Grido",
-    rating: 4.9,
-    categorias: 'heladeria',
-    foto: images.heladeria,
-    nombreProductos: "Helado de avellaneda",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Belgrano"
-  },
-  {
-    id: 42,
-    nombre: "Grido",
-    rating: 4.9,
-    categorias: 'heladeria',
-    foto: images.heladeria,
-    nombreProductos: "Helado de avellaneda",
-    descripcion:'"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-    barrio:"Belgrano"
-  }
 ]
 
 export const Settings = [{

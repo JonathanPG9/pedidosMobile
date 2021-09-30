@@ -16,7 +16,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { DrawerActions } from '@react-navigation/native';
 
-export default function CustomDrawerContent(props) {
+export default function CustomDrawerContent() {
   String.prototype.capitalize = function() {
     return this.charAt(0).toLocaleUpperCase() + this.slice(1)
 }

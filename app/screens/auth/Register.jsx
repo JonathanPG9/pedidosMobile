@@ -1,72 +1,67 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, KeyboardAvoidingView, Text } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, SafeAreaView,Platform } from 'react-native';
 import styled from 'styled-components/native'
 import { Contexto } from "../../Context/Context"
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, Icon } from 'react-native-elements';
 
-const CntPadre = styled.View`
+const CntPadre = styled.SafeAreaView`
   flex: 1;
-  justify-content: center;
 `
 const ImgCnt = styled.ImageBackground`
   flex: 1;
-  position: relative;
-  justify-content: center;
   align-items: center;
 `
-const CntInput = styled.View`
-  width: 50%;
-  position: relative;
-`
-
-
+const CntInput = styled.ScrollView`
+  flex:1;
+  width: 80%;
+  top: 57.73px;
+` 
 const SubmitButton = styled.TouchableHighlight`
   align-items: center;
-`
-
+` 
 export default function Register({ navigation }) {
 
   const { registrando } = useContext(Contexto)
   const [valuePass, setValuePass] = useState("");
   const [valueName, setValueName] = useState("")
   const [valueEmail, setValueEmail] = useState("")
-  const [valueNumero, setValueNumero] = useState(0)
+  const [valueNumero, setValueNumero] = useState()
+  const [valueEdad, setValueEdad] = useState()
+  const [lockPass,setLockPass] = useState(false)
+  const [errorText,setErrorText] = useState("")
 
   const submit = () => {
-    if (valuePass &&
-      valueNumero &&
-      valuePass &&
-      valueEmail
-    ) {
       registrando(
         valueName.toLocaleLowerCase(),
         valuePass.toLocaleLowerCase(),
         valueEmail.toLocaleLowerCase(),
-        valueNumero
+        valueNumero,
+        valueEdad,
+        navigation.navigate,
+        setErrorText
       )
-      setValueName("")
-      setValuePass("")
-      setValueNumero("")
-      setValueEmail("")
-      navigation.navigate("login")
-    }
-    else {
-      alert("Ingrese datos")
-    }
   }
   return (
     <KeyboardAvoidingView
     style={{
       flex: 1,
     }}
-    behavior='height'
+    enabled
+    behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
     <CntPadre >
-      <ImgCnt source={require('../../assets/registro.jpeg')} >
+      <ImgCnt source={require('../../assets/welcome.jpg')} >
         <CntInput >
           <Input
-            onChangeText={valueName => setValueName(valueName)}
-            placeholder="Nombre"
+            onChangeText={valueName => {
+              //setErrorText("")
+              setValueName(valueName)}}
+            labelStyle={{
+              fontSize:12,
+              top:-4,
+              color:"white"
+            }}
+            label="Nombre"
             style={styles.input}
             value={valueName}
             placeholderTextColor="white"
@@ -75,9 +70,16 @@ export default function Register({ navigation }) {
             }}
           />
           <Input
-            onChangeText={valueEmail => setValueEmail(valueEmail)}
-            placeholder="Email"
+            onChangeText={valueEmail => {
+              //setErrorText("")
+              setValueEmail(valueEmail)}}
             keyboardType="email-address"
+            labelStyle={{
+              fontSize:12,
+              top:-4,
+              color:"white"
+            }}
+            label="Correo Electronico"
             style={styles.input}
             value={valueEmail}
             placeholderTextColor="white"
@@ -86,8 +88,33 @@ export default function Register({ navigation }) {
             }}
           />
           <Input
-            onChangeText={valueNumero => setValueNumero(valueNumero)}
-            placeholder="Numero"
+            onChangeText={valueNumero => {
+              //setErrorText("")
+              setValueNumero(valueNumero)}}
+            labelStyle={{
+              fontSize:12,
+              top:-4,
+              color:"white"
+            }}
+            label="Telefono"
+            style={styles.input}
+            keyboardType="numeric"
+            placeholderTextColor="white"
+            inputContainerStyle={{
+              borderBottomColor: "white"
+            }}
+          />
+          <Input
+            onChangeText={valueNumero => {
+              //setErrorText("")
+              setValueEdad(valueNumero)}}
+            labelStyle={{
+              fontSize:12,
+              top:-4,
+              color:"white"
+            }}
+            label="Edad"
+            value={valueEdad}
             style={styles.input}
             keyboardType="numeric"
             placeholderTextColor="white"
@@ -97,14 +124,35 @@ export default function Register({ navigation }) {
           />
           <Input
             style={styles.input}
-            placeholder="Contraseña"
-            onChangeText={valuePass => setValuePass(valuePass)}
+            onChangeText={valuePass => {
+              //setErrorText("")
+              setValuePass(valuePass.toLowerCase())}}
+            labelStyle={{
+              fontSize:12,
+              color:"white"
+            }}
+            label="Contraseña"
             value={valuePass}
+            rightIcon={ 
+              <Icon
+              onPress={() => setLockPass(!lockPass)}
+              type = 'font-awesome'
+              name = {lockPass ? 'eye' : 'eye-slash'}
+              color ='white'
+            />}
             placeholderTextColor="white"
             inputContainerStyle={{
-              borderBottomColor: "white"
+              borderBottomColor: "white",
+              top:-15
             }}
-            secureTextEntry={true}
+            secureTextEntry={lockPass ? false : true}
+            errorMessage={errorText}
+            errorStyle={{
+              alignSelf:'center',
+              fontWeight:"bold",
+              fontSize:15,
+              textAlign:'center'
+            }}
           />
           <SubmitButton >
             <Button
@@ -146,11 +194,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(229,097,00)",
   },
   input: {
-    color: "white"
-  },
-  textRegister: {
-    fontSize: 12,
-    letterSpacing: 2.5,
-    color: "rgb(229,097,00)",
+    color: "white",
+    fontSize:13,
+    padding:3,
   }
 });

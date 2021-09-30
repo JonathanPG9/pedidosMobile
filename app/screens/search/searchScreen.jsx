@@ -8,7 +8,6 @@ import { Input, Icon } from 'react-native-elements';
 
 const { width } = Dimensions.get("window");
 
-
 const Search = () => {
   const input = React.createRef()
   const {callKeyboard} = useContext(Contexto)
@@ -54,7 +53,7 @@ const Search = () => {
     > 
         <TouchableOpacity
       style={{
-        flex: 0.6,
+        flex: 0.675,
         borderBottomWidth: 1,
         borderColor: "#DFDFE0",
         backgroundColor: "white",
