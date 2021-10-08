@@ -104,6 +104,8 @@ const Search = () => {
       }}
       >
         <FlatList
+        keyboardShouldPersistTaps='handled'
+        keyboardShouldPersistTaps={"always"}
         style={{
           width,
         }}

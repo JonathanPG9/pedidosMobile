@@ -36,6 +36,8 @@ export default Footer = () => {
     >
       <FlatList
         data={Settings}
+        keyboardShouldPersistTaps='handled'
+        keyboardShouldPersistTaps={"always"}
         keyExtractor={item => `${item.id}`}
         horizontal
         showsHorizontalScrollIndicator={false}

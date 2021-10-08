@@ -22,6 +22,8 @@ export default Restaurante = ({route}) => {
       }}
       >
         <ScrollView
+        keyboardShouldPersistTaps='handled'
+        keyboardShouldPersistTaps={true}
         vertical
         style={{
           width: "100%",
@@ -142,8 +144,7 @@ export default Restaurante = ({route}) => {
               resizeMode="cover"
               style={{
                 width: 80,
-                height: 89,
-                top:-0.25,
+                height: 90,
                 alignSelf:'flex-end',
                 
               }}

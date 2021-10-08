@@ -51,7 +51,10 @@ export default function Register({ navigation }) {
     >
     <CntPadre >
       <ImgCnt source={require('../../assets/welcome.jpg')} >
-        <CntInput >
+        <CntInput
+        keyboardShouldPersistTaps='handled'
+        keyboardShouldPersistTaps={"always"}
+        >
           <Input
             onChangeText={valueName => {
               //setErrorText("")
