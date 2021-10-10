@@ -5,7 +5,7 @@ import CustomDrawer from "./DrawerCustom"
 import Search from "../search/searchScreen"
 import UserData from "../user/UserData"
 import Restaurante from "../restaurante/Restaurante"
-
+import RestaurantesFavoritos from "../restaurante/RestaurantesFavoritos"
 const Drawer = createDrawerNavigator();
 
 export default function drawer() {
@@ -28,6 +28,8 @@ export default function drawer() {
         <Drawer.Screen name="search" component={Search} />
         <Drawer.Screen name="userData" component={UserData} />
         <Drawer.Screen name="Restaurante" component={Restaurante} />
+        <Drawer.Screen name="restaurantesFavoritos" component={RestaurantesFavoritos} />
+
         </Drawer.Navigator>
   );
 }

@@ -4,12 +4,12 @@ import Footer from "../footer/Footer"
 
 export default Restaurante = ({route}) => {
   const [restaurante,setRestaurante] = useState()
-  const {item} = route.params
+  const {item,isFavorite} = route.params
 
   useEffect(() => {
     setRestaurante(item)
   })
-
+console.log(isFavorite)
   return ( 
     <SafeAreaView
     style={{
@@ -36,14 +36,25 @@ export default Restaurante = ({route}) => {
           alignItems:'center',
         }}
         >
-        <Image
-        source={restaurante?.foto}
-        style={{
-          width: "100%",
-          height: 225,
-        }}
-        resizeMode="cover"
-        />
+        {isFavorite ?
+            <Image
+            style={{
+              width: "100%",
+              height: 225,
+            }}
+            resizeMode="cover"
+            source={{uri:restaurante?.foto}}
+            />
+            :
+            <Image
+            style={{
+              width: "100%",
+              height: 225,
+            }}
+            resizeMode="cover"
+            source={restaurante?.foto}
+            />
+            }
         <View
         style={{
           position:"absolute",
@@ -139,16 +150,32 @@ export default Restaurante = ({route}) => {
                 flex: 0,
               }}
               >
-              <Image
-              source={item.imgPlato}
-              resizeMode="cover"
-              style={{
-                width: 80,
-                height: 90,
-                alignSelf:'flex-end',
-                
-              }}
-              />
+              {
+                isFavorite ? 
+                <Image
+                source={{
+                  uri:item.imgPlato
+                }}
+                resizeMode="cover"
+                style={{
+                  width: 80,
+                  height: 90,
+                  alignSelf:'flex-end',
+                  
+                }}
+                />
+                :
+                <Image
+                source={item.imgPlato}
+                resizeMode="cover"
+                style={{
+                  width: 80,
+                  height: 90,
+                  alignSelf:'flex-end',
+                  
+                }}
+                />
+              }
               </View>
             </View>
             </View>

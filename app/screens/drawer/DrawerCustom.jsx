@@ -9,7 +9,6 @@ import {
   Text,
   Image,
   SafeAreaView,
-  Dimensions,
   TouchableOpacity,
   FlatList
 } from "react-native";
@@ -33,7 +32,7 @@ export default function CustomDrawerContent() {
       id:2,
       nombre:"Favoritos",
       imagen:require("../../assets/images/avatar-5.jpg"),
-      redirect:"userData"
+      redirect:"restaurantesFavoritos"
     },
     {
       id:3,
@@ -83,7 +82,7 @@ export default function CustomDrawerContent() {
             fontSize:12
           }}
           >
-            Ludmila Rodriguez
+            {User?.nombre || "Ludmila Rodriguez"}
           </Text>
           </View>
           <View
@@ -104,7 +103,7 @@ export default function CustomDrawerContent() {
                 marginLeft:20,
                 paddingVertical:8,
               }}
-              onPress={() => navigation.navigate("userData")}
+              onPress={() => navigation.navigate(item.redirect)}
               >
                 <Image
                 style={{

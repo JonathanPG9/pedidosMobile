@@ -19,7 +19,7 @@ const Context = ({ children }) => {
  */   setIsLogged(true)
       fn("home")
       setErrorText("")
-      console.log(data)
+      setUSUARIO(data.data)
     })
     .catch(err => {
       setIsLogged(false)

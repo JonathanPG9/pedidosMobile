@@ -39,9 +39,9 @@ export default function App() {
         <NavigationContainer>
           <SafeAreaProvider>
             <Stack.Navigator>
-            <Stack.Screen
-                name="home"
-                component={Drawer}
+              <Stack.Screen
+                name="login"
+                component={Login}
                 options={
                   {
                     headerShown: false
@@ -49,8 +49,8 @@ export default function App() {
                 }
               />
               <Stack.Screen
-                name="login"
-                component={Login}
+                name="home"
+                component={Drawer}
                 options={
                   {
                     headerShown: false
