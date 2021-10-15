@@ -9,7 +9,6 @@ export default Restaurante = ({route}) => {
   useEffect(() => {
     setRestaurante(item)
   })
-console.log(isFavorite)
   return ( 
     <SafeAreaView
     style={{
@@ -23,9 +22,10 @@ console.log(isFavorite)
       >
         <ScrollView
         keyboardShouldPersistTaps='handled'
-        keyboardShouldPersistTaps={true}
+        keyboardShouldPersistTaps = "always"
         vertical
         style={{
+          flex: 1,
           width: "100%",
         }}
         >
@@ -94,12 +94,11 @@ console.log(isFavorite)
               >
                 Menu
               </Text>
-        <FlatList
-        data={restaurante?.comidas}
-        keyExtractor={item => `${item.id}`}
-        renderItem={({item}) => {
-          return(
-            <View
+              {
+          restaurante?.comidas.map(item => {
+            return (
+            <View 
+            key={item.id}
             style={{
               flex: 1,
               alignItems:'center'
@@ -147,7 +146,7 @@ console.log(isFavorite)
               </View>
               <View
               style={{
-                flex: 0,
+                flex: 1,
               }}
               >
               {
@@ -161,7 +160,6 @@ console.log(isFavorite)
                   width: 80,
                   height: 90,
                   alignSelf:'flex-end',
-                  
                 }}
                 />
                 :
@@ -172,7 +170,7 @@ console.log(isFavorite)
                   width: 80,
                   height: 90,
                   alignSelf:'flex-end',
-                  
+                  top: -46.5,
                 }}
                 />
               }
@@ -180,8 +178,8 @@ console.log(isFavorite)
             </View>
             </View>
           )
-        }}
-        />
+        })
+      }
         </ScrollView>
       </View>
       <Footer/>

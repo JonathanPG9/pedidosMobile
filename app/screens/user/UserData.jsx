@@ -25,7 +25,6 @@ export default UserData = () => {
       :
       alert("Ingrese un cambio")
     }
-    console.log(nombre);
   return(
     <SafeAreaView
     style={{
@@ -65,7 +64,7 @@ export default UserData = () => {
           </Text>
           <KeyboardAvoidingView
           style={{
-            flex:0.90,
+            flex:0.55,
             width: "90%",
             borderRadius:10,
             backgroundColor:'#E3E4E5',
