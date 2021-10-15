@@ -9,7 +9,7 @@ const Context = ({ children }) => {
   const [isLogged, setIsLogged] = useState()
   const [callKeyboard, setCallKeyboard] = useState(false)
 
-  const logeando = async (email, pass, fn,setErrorText) => {
+  const logeando = (email, pass, fn,setErrorText) => {
     logueando.post({
       email: email,
       password: pass

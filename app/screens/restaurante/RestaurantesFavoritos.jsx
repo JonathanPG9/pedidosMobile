@@ -11,7 +11,7 @@ const RestaurantesFavoritos = () => {
     }}
     >
       {
-        User?.tiendas.length > 0 ?
+        User?.tiendas?.length > 0 ?
         <DefaultSearch
         user = {User}
         isFavorite = {true}
