@@ -48,6 +48,7 @@ const Context = ({ children }) => {
     logeando: logeando,
     isLogged: isLogged,
     User: USUARIO,
+    setUser : setUSUARIO,
     callKeyboard : callKeyboard,
     setCallKeyboard : setCallKeyboard
   }

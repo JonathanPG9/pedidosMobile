@@ -1,25 +1,32 @@
 import React,{useState,useContext} from 'react';
 import { Contexto } from '../../Context/Context';
 import { View,SafeAreaView ,Text, TouchableWithoutFeedback, Image,ScrollView, KeyboardAvoidingView,Platform} from "react-native";
-import { Input, Button } from 'react-native-elements';
-import {update} from '../../utils/fetching'
+import { Input } from 'react-native-elements';
+import { update } from '../../utils/fetching'
 
 export default UserData = () => {
-    const {User} = useContext(Contexto)
+    const {User,setUser} = useContext(Contexto)
+    const {nombre,apellido,email,telefono} = User;
     const [changePass,setChangePass] = useState(false)
-    const [nombre,setNombre] = useState("")
-    const [apellido,setApellido] = useState("")
-    const [email,setEmail] = useState("")
-    const [telefono,setTelefono] = useState("")
-    console.log(User.userId)
+    const [changeNombre,setNombre] = useState("")
+    const [changeApellido,setApellido] = useState("")
+    const [changeEmail,setEmail] = useState("")
+    const [changeTelefono,setTelefono] = useState("")
     const actualizarUsuario = (nm,apl,eml,tlf) => {
       update.update(User.userId,{
-        nombre : nm,
-        apellido : apl ,
-        email : eml, 
-        telefono : tlf
+        nombre: nm.length > 0 ? nm : nombre,
+        apellido: apl.length > 0 ? apl : apellido,
+        email: eml.length > 0 ? eml : email,
+        telefono: tlf.length > 0 ? tlf : telefono
       })
-      .then(data => console.log(data))
+      .then(data => {
+        User.nombre = data.data?.nombre
+        User.apellido = data.data?.apellido
+        User.email = data.data?.email
+        User.telefono = data.data?.telefono
+        setUser({...User})
+        return
+      })
       .catch(err => console.log(err))
     }
   return(
@@ -47,7 +54,7 @@ export default UserData = () => {
             fontSize:12,
           }}
           >
-            {`${User.nombre || "Ludmila"} ${User.apellido || "Rodriguez"}`}
+            {`${nombre || "Ludmila"} ${apellido || "Rodriguez"}`}
           </Text>
           <Text
           style={{
@@ -87,7 +94,7 @@ export default UserData = () => {
             label="Nombre"
             placeholder={User.nombre || ""}
             onChangeText={(text) => setNombre(text)}
-            value={nombre}
+            value={changeNombre}
             placeholderTextColor="black"
             />
             <Input
@@ -98,7 +105,7 @@ export default UserData = () => {
             placeholder={User.apellido || ""}
             placeholderTextColor="black"
             onChangeText={(text) => setApellido(text)}
-            value={apellido}
+            value={changeApellido}
             />
             <Input 
             labelStyle={{
@@ -108,7 +115,7 @@ export default UserData = () => {
             label="Correo electronico"
             placeholderTextColor="black"
             onChangeText={(text) => setEmail(text)}
-            value={email}
+            value={changeEmail}
             />
             <Input 
             labelStyle={{
@@ -118,7 +125,7 @@ export default UserData = () => {
             label="Telefono"
             placeholderTextColor="black"
             onChangeText={(text) => setTelefono(text)}
-            value={telefono}
+            value={changeTelefono}
             />
             </View>
             </ScrollView>
@@ -138,15 +145,15 @@ export default UserData = () => {
             }}
             >
               {
-              nombre.length > 0 ||
-              apellido.length > 0 ||
-              email.length > 0 ||
-              telefono.length > 0 ?
+              changeNombre.length > 0 ||
+              changeApellido.length > 0 ||
+              changeEmail.length > 0 ||
+              changeTelefono.length > 0 ?
               <Text
               style={{
               }}
               onPress={() => {
-                actualizarUsuario(nombre,apellido,email,telefono)
+                actualizarUsuario(changeNombre,changeApellido,changeEmail,changeTelefono)
               }}
               >
                 Actualizar datos
