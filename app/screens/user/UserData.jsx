@@ -2,7 +2,7 @@ import React,{useState,useContext} from 'react';
 import { Contexto } from '../../Context/Context';
 import { View,SafeAreaView ,Text, TouchableWithoutFeedback, Image,ScrollView, KeyboardAvoidingView,Platform} from "react-native";
 import { Input, Button } from 'react-native-elements';
-import {updateUser} from '../../utils/fetching'
+import {update} from '../../utils/fetching'
 
 export default UserData = () => {
     const {User} = useContext(Contexto)
@@ -11,19 +11,16 @@ export default UserData = () => {
     const [apellido,setApellido] = useState("")
     const [email,setEmail] = useState("")
     const [telefono,setTelefono] = useState("")
+    console.log(User.userId)
     const actualizarUsuario = (nm,apl,eml,tlf) => {
-      nm.length > 1 ||
-      apl.length > 1 ||
-      eml.length > 1 ||
-      tlf.length > 1  ?
-      updateUser.put({
+      update.update(User.userId,{
         nombre : nm,
         apellido : apl ,
         email : eml, 
         telefono : tlf
       })
-      :
-      alert("Ingrese un cambio")
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
     }
   return(
     <SafeAreaView
@@ -64,11 +61,10 @@ export default UserData = () => {
           </Text>
           <KeyboardAvoidingView
           style={{
-            flex:0.55,
+            flex: Platform.OS === "ios" ? 0.55 : 1,
             width: "90%",
             borderRadius:10,
             backgroundColor:'#E3E4E5',
-            justifyContent:'center',
           }}
           enabled
           behavior={Platform.OS === "ios" ? 'padding' : 'height'}
@@ -78,6 +74,11 @@ export default UserData = () => {
               flex:1,
             }}
             >
+              <View
+              style={{
+                marginTop: Platform.OS === "ios" ? 10 : 15
+              }}
+              >
             <Input
             labelStyle={{
               fontSize:12,
@@ -119,10 +120,10 @@ export default UserData = () => {
             onChangeText={(text) => setTelefono(text)}
             value={telefono}
             />
+            </View>
             </ScrollView>
           </KeyboardAvoidingView>
           <TouchableWithoutFeedback
-          onPress={() => alert("hola")}
           >
             <View
             style={{
@@ -133,15 +134,32 @@ export default UserData = () => {
               left: 15,
               backgroundColor:"#E3E4E5",
               borderRadius:20,
-              padding: 10
+              padding: 5
             }}
             >
+              {
+              nombre.length > 0 ||
+              apellido.length > 0 ||
+              email.length > 0 ||
+              telefono.length > 0 ?
               <Text
               style={{
               }}
+              onPress={() => {
+                actualizarUsuario(nombre,apellido,email,telefono)
+              }}
               >
-            Cambiar contraseña
+                Actualizar datos
               </Text>
+              :
+              <Text
+              style={{
+              }}
+              onPress={ () => alert("hola cambio contraseña")}
+              >
+                Cambiar contraseña
+              </Text>
+              }
             </View>
           </TouchableWithoutFeedback>
       </SafeAreaView>

@@ -29,7 +29,7 @@ align-items: center;
 `
 export default function Login({ navigation }) {
   const { logeando } = useContext(Contexto)
-  const [valuePass, setValuePass] = useState("jonita");
+  const [valuePass, setValuePass] = useState("jonita24");
   const [valueName, setValueName] = useState("jonita@gmail.com")
   const [lockPass,setLockPass] = useState(false)
   const [errorText,setErrorText] = useState("")

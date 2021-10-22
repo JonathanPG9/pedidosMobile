@@ -8,7 +8,7 @@ export default inputSearch = () => {
   const navigation = useNavigation()
   const {setCallKeyboard,callKeyboard} = useContext(Contexto)
   return (
-    <TouchableOpacity
+    <View
       style={{
         flex: 0.6,
         borderBottomWidth: 1,
@@ -16,15 +16,15 @@ export default inputSearch = () => {
         backgroundColor: "white",
         justifyContent: 'center',
       }}
-      onPress={() =>  {
-        navigation.navigate("search")
-        setCallKeyboard(!callKeyboard)
-      }}
     >
-      <View
+      <TouchableOpacity
         style={{
           flex: 0,
           width: "65%"
+        }}
+        onPress={() =>  {
+          navigation.navigate("search")
+          setCallKeyboard(!callKeyboard)
         }}
       >
         <Input
@@ -36,6 +36,10 @@ export default inputSearch = () => {
             left: 12,
             top: 5,
             paddingLeft: 20,
+          }}
+          onTouchStart={() =>  {
+            navigation.navigate("search")
+            setCallKeyboard(!callKeyboard)
           }}
           disabled={true}
           placeholder="Buscar negocios..."
@@ -59,7 +63,7 @@ export default inputSearch = () => {
             />
           }
         />
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   )
 }
