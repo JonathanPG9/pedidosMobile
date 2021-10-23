@@ -4,7 +4,6 @@ import { callApiUsers, logueando, register } from "../utils/fetching"
 export const Contexto = createContext()
 
 const Context = ({ children }) => {
-
   const [Usuario, setUsuario] = useState([])
   const [isLogged, setIsLogged] = useState()
   const [callKeyboard, setCallKeyboard] = useState(false)
@@ -15,8 +14,8 @@ const Context = ({ children }) => {
       password: pass
     })
     .then(data => {
-/*       setUSUARIO(data["data"])
- */   setIsLogged(true)
+      /* setUSUARIO(data["data"]) */
+      setIsLogged(true)
       fn("home")
       setErrorText("")
       setUsuario(data.data)
