@@ -5,7 +5,7 @@ export const Contexto = createContext()
 
 const Context = ({ children }) => {
 
-  const [USUARIO, setUSUARIO] = useState([])
+  const [Usuario, setUsuario] = useState([])
   const [isLogged, setIsLogged] = useState()
   const [callKeyboard, setCallKeyboard] = useState(false)
 
@@ -19,7 +19,7 @@ const Context = ({ children }) => {
  */   setIsLogged(true)
       fn("home")
       setErrorText("")
-      setUSUARIO(data.data)
+      setUsuario(data.data)
     })
     .catch(err => {
       setIsLogged(false)
@@ -47,8 +47,8 @@ const Context = ({ children }) => {
     registrando: registrando,
     logeando: logeando,
     isLogged: isLogged,
-    User: USUARIO,
-    setUser : setUSUARIO,
+    User: Usuario,
+    setUser : setUsuario,
     callKeyboard : callKeyboard,
     setCallKeyboard : setCallKeyboard
   }
