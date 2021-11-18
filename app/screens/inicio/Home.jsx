@@ -33,25 +33,15 @@ export default Home = () => {
 
   function renderCategorias() {
     return (
-      <View
-        style={{
-          flex: 0.70,
-        }}
-      >
-        <View
-        style={{
-          flexDirection:'row',
-          marginTop:13,
-        }}
-        >
+      <View style={{ flex: 0.70 }}>
+        <View style={{ flexDirection:'row',marginTop:13 }}>
         <Text
           style={{
             marginLeft:15,
             fontSize: 30,
             color: "#5D5D5D",
             fontFamily: "Karantina-Bold",
-          }}
-        >
+          }}>
           Secciones
         </Text>
         {
@@ -125,11 +115,7 @@ export default Home = () => {
   }
   function renderTiendas() {
     return (
-      <View
-        style={{
-          flex: 1.7,
-        }}
-      >
+      <View style={{ flex: 1.7 }}>
         <Text
           style={{
             marginLeft: 15,
@@ -196,12 +182,9 @@ export default Home = () => {
                       tintColor: "rgb(229,097,00)",
                     }}
                   />
-                  <Text
-                    style={{
-                      marginLeft: 10,
-                      fontSize: 13,
-                    }}
-                  >{item.nombre}</Text>
+                  <Text style={{ marginLeft: 10, fontSize: 13 }}>
+                    {item.nombre}
+                  </Text>
                 </View>
               </TouchableOpacity>
           )}

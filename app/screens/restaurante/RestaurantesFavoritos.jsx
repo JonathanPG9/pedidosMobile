@@ -5,11 +5,7 @@ import { SafeAreaView,Text,View} from 'react-native';
 const RestaurantesFavoritos = () => {
   const {User} = useContext(Contexto)
   return ( 
-    <SafeAreaView
-    style={{
-      flex: 1,
-    }}
-    >
+    <SafeAreaView style={{ flex: 1 }} >
       {
         User?.tiendas?.length > 0 ?
         <DefaultSearch

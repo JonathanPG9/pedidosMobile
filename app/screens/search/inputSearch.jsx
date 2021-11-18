@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
-import { View,TouchableOpacity } from "react-native";
+import React, { useContext } from 'react';
+import { View, TouchableOpacity } from "react-native";
 import { Input, Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import { Contexto } from "../../Context/Context";
 
 export default inputSearch = () => {
   const navigation = useNavigation()
-  const {setCallKeyboard,callKeyboard} = useContext(Contexto)
+  const { setCallKeyboard, callKeyboard } = useContext(Contexto)
   return (
     <View
       style={{
@@ -17,12 +17,8 @@ export default inputSearch = () => {
         justifyContent: 'center',
       }}
     >
-      <TouchableOpacity
-        style={{
-          flex: 0,
-          width: "65%"
-        }}
-        onPress={() =>  {
+      <TouchableOpacity style={{ flex: 0, width: "65%" }}
+        onPress={() => {
           navigation.navigate("search")
           setCallKeyboard(!callKeyboard)
         }}
@@ -37,18 +33,18 @@ export default inputSearch = () => {
             top: 5,
             paddingLeft: 20,
           }}
-          onTouchStart={() =>  {
+          onTouchStart={() => {
             navigation.navigate("search")
             setCallKeyboard(!callKeyboard)
           }}
           disabled={true}
           placeholder="Buscar negocios..."
-          autoFocus={false} 
-/*           onTouchStart={() =>  {
-            setTimeout(() => {
-              navigation.navigate("search")
-            },100)
-          }  } */
+          autoFocus={false}
+          /*           onTouchStart={() =>  {
+                      setTimeout(() => {
+                        navigation.navigate("search")
+                      },100)
+                    }  } */
           keyboardShouldPersistTaps="always"
           rightIcon={
             <Icon

@@ -10,10 +10,7 @@ const Drawer = createDrawerNavigator();
 
 export default function drawer() {
   return (
-      
       <Drawer.Navigator
-      style={{
-      }}
       screenOptions={{
         headerShown: false,
         overlayColor: "rgba(0,0,0,0.88)",
@@ -29,7 +26,6 @@ export default function drawer() {
         <Drawer.Screen name="userData" component={UserData} />
         <Drawer.Screen name="Restaurante" component={Restaurante} />
         <Drawer.Screen name="restaurantesFavoritos" component={RestaurantesFavoritos} />
-
         </Drawer.Navigator>
   );
 }

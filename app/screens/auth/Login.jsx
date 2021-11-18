@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, KeyboardAvoidingView, Text, Platform,View} from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, Text, Platform, View } from 'react-native';
 import styled from 'styled-components/native'
 import { Contexto } from "../../Context/Context"
-import { Input, Button , Icon} from 'react-native-elements';
+import { Input, Button, Icon } from 'react-native-elements';
 
 const CntPadre = styled.View`
-flex: 1;
-justify-content: center;
+  flex: 1;
+  justify-content: center;
 `
 const ImgCnt = styled.ImageBackground`
   flex: 1;
@@ -31,118 +31,117 @@ export default function Login({ navigation }) {
   const { logeando } = useContext(Contexto)
   const [valuePass, setValuePass] = useState("aylen");
   const [valueName, setValueName] = useState("loreaylen@gmail.com")
-  const [lockPass,setLockPass] = useState(false)
-  const [errorText,setErrorText] = useState("")
+  const [lockPass, setLockPass] = useState(false)
+  const [errorText, setErrorText] = useState("")
   const submit = () => {
-    logeando(valueName.toLocaleLowerCase(), valuePass.toLocaleLowerCase(), navigation.navigate,setErrorText)
+    logeando(valueName.toLocaleLowerCase(), valuePass.toLocaleLowerCase(), navigation.navigate, setErrorText)
     setValueName("")
     setValuePass("")
   }
   return (
     <KeyboardAvoidingView
-    style={{
-      flex: 1,
-    }} 
-    enabled
-    behavior={Platform.OS === "ios" ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+      enabled
+      behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
-    <CntPadre >
-      <ImgCnt source={require('../../assets/welcome.jpg')} >
-        <CntInput>
-          <Input
-            onChangeText={valueName =>{
-            setErrorText("")
-            setValueName(valueName)}
-            }
-            labelStyle={{
-              fontSize:12,
-              top:11,
-              color:"white"
-            }}
-            label="Correo Electronico"
-            style={styles.input}
-            value={valueName}
-            inputContainerStyle={{
-              borderBottomColor: "white",
-            }}
-          />
-          <Input
-            labelStyle={{
-              fontSize:12,
-              top:11,
-              color:"white"
-            }}
-            label="Contraseña"
-            errorMessage={errorText}
-            onChangeText={valuePass =>{
-              setErrorText("")
-              setValuePass(valuePass)}
-            }
-            value={valuePass}
-            inputContainerStyle={{
-              borderBottomColor: "white"
-            }}
-            style={styles.input}
-            secureTextEntry={lockPass ? false : true}
-            rightIcon={ 
-            <Icon
-            onPress={() => setLockPass(!lockPass)}
-            style={{
-              marginTop: -2,
-              marginRight: 20,
-            }}
-            type = 'font-awesome'
-            name = {lockPass ? 'eye' : 'eye-slash'}
-            color ='white'
-          />}
-          />
-          <Text
-          style={{
-            alignSelf:'center',
-            color: "white",
-            top: -6,
-          }}
-          >
-            Haz olvidado tu contraseña?
-          </Text>
-          <SubmitButton > 
-            <Button
-              title="Listo"
-              containerStyle={{
-                backgroundColor: "rgb(229,097,00)",
-              }}
-              titleStyle={
-                {
-                  color: "white",
-                  fontSize: 14,
-                  letterSpacing: 1,
-                }
+      <CntPadre >
+        <ImgCnt source={require('../../assets/welcome.jpg')} >
+          <CntInput>
+            <Input
+              onChangeText={valueName => {
+                setErrorText("")
+                setValueName(valueName)
               }
-              onPress={submit}
-              type="clear"
+              }
+              labelStyle={{
+                fontSize: 12,
+                top: 11,
+                color: "white"
+              }}
+              label="Correo Electronico"
+              style={styles.input}
+              value={valueName}
+              inputContainerStyle={{
+                borderBottomColor: "white",
+              }}
             />
-          </SubmitButton>
-        </CntInput>
-        <CntRegistro>
-          <Text
-            style={styles.textRegister}
-            onPress={() => navigation.navigate("register")}
-          >
-            Registrate
-          </Text>
-        </CntRegistro>
-      </ImgCnt>
-    </CntPadre>
+            <Input
+              labelStyle={{
+                fontSize: 12,
+                top: 11,
+                color: "white"
+              }}
+              label="Contraseña"
+              errorMessage={errorText}
+              onChangeText={valuePass => {
+                setErrorText("")
+                setValuePass(valuePass)
+              }
+              }
+              value={valuePass}
+              inputContainerStyle={{
+                borderBottomColor: "white"
+              }}
+              style={styles.input}
+              secureTextEntry={lockPass ? false : true}
+              rightIcon={
+                <Icon
+                  onPress={() => setLockPass(!lockPass)}
+                  style={{
+                    marginTop: -2,
+                    marginRight: 20,
+                  }}
+                  type='font-awesome'
+                  name={lockPass ? 'eye' : 'eye-slash'}
+                  color='white'
+                />}
+            />
+            <Text
+              style={{
+                alignSelf: 'center',
+                color: "white",
+                top: -6,
+              }}
+            >
+              Haz olvidado tu contraseña?
+            </Text>
+            <SubmitButton >
+              <Button
+                title="Listo"
+                containerStyle={{
+                  backgroundColor: "rgb(229,097,00)",
+                }}
+                titleStyle={
+                  {
+                    color: "white",
+                    fontSize: 14,
+                    letterSpacing: 1,
+                  }
+                }
+                onPress={submit}
+                type="clear"
+              />
+            </SubmitButton>
+          </CntInput>
+          <CntRegistro>
+            <Text
+              style={styles.textRegister}
+              onPress={() => navigation.navigate("register")}
+            >
+              Registrate
+            </Text>
+          </CntRegistro>
+        </ImgCnt>
+      </CntPadre>
     </KeyboardAvoidingView>
-
   );
 }
 
 const styles = StyleSheet.create({
   input: {
     color: "white",
-    fontSize:14,
-    padding:2,
+    fontSize: 14,
+    padding: 2,
   },
   textRegister: {
     fontSize: 20,
