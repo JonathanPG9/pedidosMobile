@@ -30,7 +30,7 @@ const ChangePass = ({setChangePass}) => {
       }}
     >
       <Text
-        style={{ fontSize: "18", marginBottom: 10 }}
+        style={{ fontSize: 18, marginBottom: 10 }}
       >
         Cambia tu contraseña
       </Text>

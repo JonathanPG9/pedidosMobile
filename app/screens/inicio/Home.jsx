@@ -33,7 +33,7 @@ export default Home = () => {
 
   function renderCategorias() {
     return (
-      <View style={{ flex: Platform.OS  === "ios" ? 0.75 : 0.70 }}>
+      <View style={{ flex: Platform.OS  === "ios" ? 0.68 : 0.70 }}>
         <View style={{ flexDirection: 'row', marginTop: Platform.OS === "ios" ? 33 : 13 }}>
           <Text
             style={{
@@ -118,7 +118,7 @@ export default Home = () => {
   }
   function renderTiendas() {
     return (
-      <View style={{ flex: Platform.OS === "ios" ? 1.3 : 1.7}}>
+      <View style={{ flex: Platform.OS === "ios" ? 1.5 : 1.7}}>
         <Text
           style={{
             marginLeft: 15,
@@ -158,8 +158,8 @@ export default Home = () => {
                   source={item.foto}
                   resizeMode="cover"
                   style={{
-                    width: Platform.OS === "ios" ? 160 : 150,
-                    height: Platform.OS === "ios" ? 125 : 100,
+                    width: Platform.OS === "ios" ? 175 : 150,
+                    height: Platform.OS === "ios" ? 140 : 100,
                     borderRadius: 15,
                   }}
                 />

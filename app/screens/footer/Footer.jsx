@@ -17,7 +17,7 @@ export default Footer = ({homePosition}) => {
   const navigation = useNavigation()
   return (
     <KeyboardAvoidingView
-      style={{ flex: Platform.OS === "ios" && homePosition ? 0.168 : Platform.OS === "ios" ? 0.19: 0.31, alignItems: 'center' }}
+      style={{ flex: Platform.OS === "ios" && homePosition ? 0.176 : Platform.OS === "ios" ? 0.19: 0.31, alignItems: 'center' }}
       enabled
       behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
