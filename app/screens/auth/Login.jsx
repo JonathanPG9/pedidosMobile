@@ -29,7 +29,7 @@ align-items: center;
 `
 export default function Login({ navigation }) {
   const { logeando } = useContext(Contexto)
-  const [valuePass, setValuePass] = useState("aylen");
+  const [valuePass, setValuePass] = useState("azucar");
   const [valueName, setValueName] = useState("loreaylen@gmail.com")
   const [lockPass, setLockPass] = useState(false)
   const [errorText, setErrorText] = useState("")
@@ -118,7 +118,7 @@ export default function Login({ navigation }) {
                     letterSpacing: 1,
                   }
                 }
-                onPress={submit}
+                onPress={() => submit()}
                 type="clear"
               />
             </SubmitButton>
