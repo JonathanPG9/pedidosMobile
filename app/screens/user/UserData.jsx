@@ -75,7 +75,7 @@ export default UserData = () => {
     </Text>
     <KeyboardAvoidingView
       style={{
-        flex: Platform.OS === "ios" ? 0.57 : 1,
+        flex: Platform.OS === "ios" ? 0.80 : 0.91,
         width: "90%",
         borderRadius: 10,
         backgroundColor: '#E3E4E5',
@@ -84,11 +84,11 @@ export default UserData = () => {
       behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
       <ScrollView style={{ flex: 1 }}>
-        <View style={{ marginTop: Platform.OS === "ios" ? 10 : 15 }}>
+        <View style={{ marginTop: Platform.OS === "ios" ? 22 : -10 }}>
           <Input
             labelStyle={{
               fontSize: 12,
-              marginTop: 10,
+              marginTop: 22,
             }}
             label="Nombre"
             placeholder={User.nombre || ""}
@@ -99,6 +99,7 @@ export default UserData = () => {
           <Input
             labelStyle={{
               fontSize: 12,
+              marginTop: Platform.OS === "ios" ? 22 : 0,
             }}
             label="Apellido"
             placeholder={User.apellido || ""}
@@ -109,6 +110,7 @@ export default UserData = () => {
           <Input
             labelStyle={{
               fontSize: 12,
+              marginTop: Platform.OS === "ios" ? 22 : 0,
             }}
             placeholder={User.email || ""}
             label="Correo electronico"
@@ -119,6 +121,7 @@ export default UserData = () => {
           <Input
             labelStyle={{
               fontSize: 12,
+              marginTop: Platform.OS === "ios" ? 22 : 0,
             }}
             placeholder={`${User.telefono}` || ""}
             label="Telefono"
@@ -148,16 +151,14 @@ export default UserData = () => {
             changeApellido.length > 0 ||
             changeEmail.length > 0 ||
             changeTelefono.length > 0 ?
-            <Text
-              onPress={() => {
-                actualizarUsuario(changeNombre, changeApellido, changeEmail, changeTelefono)
-              }}
+            <Text onPress={() => {actualizarUsuario(changeNombre, changeApellido, changeEmail, changeTelefono)}}
+            style={{height:20}}
             >
               Actualizar datos
             </Text>
             :
-            <Text
-              onPress={() => setChangePass(true)}
+            <Text onPress={() => setChangePass(true)}
+            style={{height:20}}
             >
               Cambiar contraseña
             </Text>
