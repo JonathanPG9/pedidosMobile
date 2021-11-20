@@ -6,8 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Dimensions,
-  ScrollView
+  ScrollView,
+  Platform
 } from "react-native";
 import styled from 'styled-components/native'
 import { Tiendas, Categorias } from "../../utils/tiendas"
@@ -33,14 +33,15 @@ export default Home = () => {
 
   function renderCategorias() {
     return (
-      <View style={{ flex: 0.70 }}>
-        <View style={{ flexDirection: 'row', marginTop: 13 }}>
+      <View style={{ flex: Platform.OS  === "ios" ? 0.75 : 0.70 }}>
+        <View style={{ flexDirection: 'row', marginTop: Platform.OS === "ios" ? 33 : 13 }}>
           <Text
             style={{
               marginLeft: 15,
               fontSize: 30,
               color: "#5D5D5D",
               fontFamily: "Karantina-Bold",
+              marginBottom: Platform.OS === "ios" ? 10 : 0
             }}
           >
             Secciones
@@ -76,6 +77,7 @@ export default Home = () => {
                 style={{
                   alignItems: "center",
                   marginRight: 7,
+                  top:Platform.OS === "ios" ? 6 : 0,
                   marginLeft: 7,
                 }}
                 onPress={() => selectCategory(item)}
@@ -116,7 +118,7 @@ export default Home = () => {
   }
   function renderTiendas() {
     return (
-      <View style={{ flex: 1.7 }}>
+      <View style={{ flex: Platform.OS === "ios" ? 1.3 : 1.7}}>
         <Text
           style={{
             marginLeft: 15,
@@ -125,7 +127,7 @@ export default Home = () => {
             fontSize: 35,
             color: "rgb(229,097,00)",
             fontFamily: "Karantina-Bold",
-            top: 3,
+            top: Platform.OS === "ios" ? -15 : 3,
           }}
         >
           Restaurantes
@@ -156,8 +158,8 @@ export default Home = () => {
                   source={item.foto}
                   resizeMode="cover"
                   style={{
-                    width: 150,
-                    height: 100,
+                    width: Platform.OS === "ios" ? 160 : 150,
+                    height: Platform.OS === "ios" ? 125 : 100,
                     borderRadius: 15,
                   }}
                 />
@@ -200,7 +202,9 @@ export default Home = () => {
       <Search />
       {renderCategorias()}
       {renderTiendas()}
-      <Footer />
+      <Footer 
+      homePosition = {true}
+      />
     </SafeAreaView>
   )
 }

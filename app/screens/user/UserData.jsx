@@ -49,6 +49,7 @@ export default UserData = () => {
         height: 72,
         backgroundColor: 'yellow',
         borderRadius: 100,
+        marginTop:Platform.OS === "ios" ? 55 : 1,
       }}
       resizeMode="cover"
       source={{ uri: "https://i.pinimg.com/236x/f9/27/77/f927779d0f19649c681d9b5a0c365edd.jpg" }}
@@ -74,7 +75,7 @@ export default UserData = () => {
     </Text>
     <KeyboardAvoidingView
       style={{
-        flex: Platform.OS === "ios" ? 0.55 : 1,
+        flex: Platform.OS === "ios" ? 0.57 : 1,
         width: "90%",
         borderRadius: 10,
         backgroundColor: '#E3E4E5',

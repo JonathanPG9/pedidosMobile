@@ -6,17 +6,18 @@ import {
   Text,
   FlatList,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  Dimensions
 } from "react-native";
 import { Icon } from 'react-native-elements';
 import { Settings } from "../../utils/tiendas"
+const {width} = Dimensions.get("window");
 
-
-export default Footer = () => {
+export default Footer = ({homePosition}) => {
   const navigation = useNavigation()
   return (
     <KeyboardAvoidingView
-      style={{ flex: 0.31, alignItems: 'center' }}
+      style={{ flex: Platform.OS === "ios" && homePosition ? 0.168 : Platform.OS === "ios" ? 0.19: 0.31, alignItems: 'center' }}
       enabled
       behavior={Platform.OS === "ios" ? 'padding' : 'height'}
     >
@@ -24,8 +25,8 @@ export default Footer = () => {
         <View
           style={{
             height: 50,
-            borderWidth: 0.1,
-            borderRadius: 25,
+            borderWidth: Platform.OS === "ios" ? 0.3 : 0.1,
+            borderRadius: Platform.OS === "ios" ?  width * 0.125*0.5: 25,
           }}
         >
           <FlatList
@@ -42,7 +43,7 @@ export default Footer = () => {
                     justifyContent: 'center',
                     width: 55,
                     alignItems: "center",
-                    marginTop: -6,
+                    marginTop: Platform.OS === "ios" ? 0 : -6,
                   }}
                 >
                   <Icon

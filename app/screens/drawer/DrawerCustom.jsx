@@ -26,7 +26,7 @@ export default function CustomDrawerContent() {
       id: 1,
       nombre: "Inicio",
       imagen: require("../../assets/images/avatar-5.jpg"),
-      redirect: "userData"
+      redirect: "Home"
     },
     {
       id: 2,
