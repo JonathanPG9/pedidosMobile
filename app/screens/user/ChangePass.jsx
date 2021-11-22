@@ -82,7 +82,7 @@ const ChangePass = ({ setChangePass }) => {
             secureTextEntry={lockConfirmPass ? false : true}
             rightIcon={
               <Icon
-                onPress={() => setLockConfirmPass(!lockPass)}
+                onPress={() => setLockConfirmPass(!lockConfirmPass)}
                 style={{
                   marginTop: -2,
                   marginRight: 20,

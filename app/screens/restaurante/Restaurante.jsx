@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, View, Image, TouchableOpacity, StyleSheet, ScrollView, FlatList } from "react-native";
 import Footer from "../footer/Footer"
+import { useNavigation } from '@react-navigation/native';
 
 export default Restaurante = ({ route }) => {
   const [restaurante, setRestaurante] = useState()
+  const navigation = useNavigation()
   const { item, isFavorite } = route.params
 
   useEffect(() => {
@@ -28,25 +30,14 @@ export default Restaurante = ({ route }) => {
               alignItems: 'center',
             }}
           >
-            {isFavorite ?
               <Image
                 style={{
                   width: "100%",
                   height: 225,
                 }}
                 resizeMode="cover"
-                source={{ uri: restaurante?.foto }}
-              />
-              :
-              <Image
-                style={{
-                  width: "100%",
-                  height: 225,
-                }}
-                resizeMode="cover"
-                source={restaurante?.foto}
-              />
-            }
+                source={isFavorite ? { uri: restaurante?.foto } : restaurante?.foto}
+              /> 
             <View
               style={{
                 position: "absolute",
@@ -121,7 +112,7 @@ export default Restaurante = ({ route }) => {
                           top: 2,
                         }}
                       >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus sint eligendi officiis temporibus officiis Odio
+                        {item.descripcion}
                       </Text>
                       <Text
                         style={{
@@ -134,27 +125,16 @@ export default Restaurante = ({ route }) => {
                         ${item.precio}
                       </Text>
                     </View>
-                    <View
+                    <TouchableOpacity
                       style={{
                         flex: 1,
                       }}
+                      onPress={() => navigation.navigate("buyScreen",{
+                        item,isFavorite
+                      })}
                     >
-                      {
-                        isFavorite ?
                           <Image
-                            source={{
-                              uri: item.imgPlato
-                            }}
-                            resizeMode="cover"
-                            style={{
-                              width: 80,
-                              height: 90,
-                              alignSelf: 'flex-end',
-                            }}
-                          />
-                          :
-                          <Image
-                            source={item.imgPlato}
+                            source={ isFavorite ? { uri: item.imgPlato } : item.imgPlato }
                             resizeMode="cover"
                             style={{
                               width: 80,
@@ -162,9 +142,8 @@ export default Restaurante = ({ route }) => {
                               alignSelf: 'flex-end',
                               top: -46.5,
                             }}
-                          />
-                      }
-                    </View>
+                          /> 
+                    </TouchableOpacity>
                   </View>
                 </View>
               )
