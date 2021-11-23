@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, Platform, Dimensions, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
+import { Contexto } from '../../Context/Context';
 const { width } = Dimensions.get("window");
 
 
 
 const Buy = ({ route }) => {
   const [value, setValue] = useState(1)
+  const {carrito,setCarrito} = useContext(Contexto)
   const { item, isFavorite } = route.params;
-  const [total, setTotal] = useState(0);
+  const [alreadyBuy, setIsAlreadyBuy] = useState(false);
   const [comentario, setComentario] = useState("")
+  const navigation = useNavigation()
   const adding = (n) => {
     if (n === 15) return alert("Maximo de unidades")
     setValue(n + 1)
@@ -22,6 +25,28 @@ const Buy = ({ route }) => {
   const viewComment = (value) => {
     if (value.length > 130) return alert("maximo 130 caracteres")
     setComentario(value)
+  }
+  const submit = (producto) => {
+    const Isrepeated = carrito.find(x => x.id === producto.id && x.nombreDePlato === producto.nombreDePlato && x.descripcion === producto.descripcion);
+    producto.cantidad = value;
+    if(typeof Isrepeated !== "undefined") {
+      Isrepeated.cantidad += producto.cantidad;
+      Isrepeated.precioTotal = Isrepeated.cantidad * Isrepeated.precio;
+      setCarrito([...new Set([...carrito, Isrepeated])])
+      setIsAlreadyBuy(true)
+      setValue(0)
+      console.log(carrito)
+      return;
+    }
+    producto.precioTotal = producto.cantidad * producto.precio
+    setCarrito([...carrito,{...producto}])
+    setIsAlreadyBuy(true)
+    setValue(0)
+    console.log(carrito)
+  }
+  const goToPay = () => {
+    navigation.navigate("Home")
+    setIsAlreadyBuy(false)
   }
   return (
     <SafeAreaView style={{
@@ -183,8 +208,10 @@ const Buy = ({ route }) => {
       </ScrollView>
       <View
         style={{ backgroundColor: "rgb(229,097,00)", }}
-      >
-        <Button
+        >
+        {
+          !alreadyBuy ?
+          <Button
           title={`Agregar pedido de $${item.precio * value}`}
           containerStyle={{
             marginTop: 10,
@@ -195,9 +222,25 @@ const Buy = ({ route }) => {
             fontSize: 14,
             letterSpacing: 1,
           }}
-          onPress={() => submit()}
+          onPress={() => submit(item)}
           type="clear"
         />
+        :
+        <Button
+        title={`Ir al carrito`}
+        containerStyle={{
+          marginTop: 10,
+          height: 45
+        }}
+        titleStyle={{
+          color: "white",
+          fontSize: 14,
+          letterSpacing: 1,
+        }}
+        onPress={() => goToPay()}
+        type="clear"
+      />
+        }
       </View>
     </SafeAreaView>
   );

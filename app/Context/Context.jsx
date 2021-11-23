@@ -7,7 +7,7 @@ const Context = ({ children }) => {
   const [Usuario, setUsuario] = useState([])
   const [isLogged, setIsLogged] = useState()
   const [callKeyboard, setCallKeyboard] = useState(false)
-
+  const [carrito,setCarrito] = useState([])
   const logeando = (email, pass, fn,setErrorText) => {
     logueando.post({
       email: email,
@@ -47,10 +47,14 @@ const Context = ({ children }) => {
     logeando: logeando,
     isLogged: isLogged,
     User: Usuario,
-    setUser : setUsuario,
-    callKeyboard : callKeyboard,
-    setCallKeyboard : setCallKeyboard
+    setUser: setUsuario,
+    callKeyboard: callKeyboard,
+    setCallKeyboard: setCallKeyboard,
+    setCarrito: setCarrito,
+    carrito: carrito
   }
+  console.log(carrito)
+
   return (
     <Contexto.Provider value={context}>
       {children}
