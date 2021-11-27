@@ -12,15 +12,13 @@ import {
   TouchableOpacity,
   FlatList
 } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 import { DrawerActions } from '@react-navigation/native';
 
 export default function CustomDrawerContent() {
   String.prototype.capitalize = function () {
     return this.charAt(0).toLocaleUpperCase() + this.slice(1)
   }
-  const navigation = useNavigation()
-  const { User } = useContext(Contexto)
+  const { User,setValue,navigation } = useContext(Contexto)
   const configuracion = [
     {
       id: 1,
@@ -48,10 +46,16 @@ export default function CustomDrawerContent() {
     },
     {
       id: 5,
+      nombre: "Carrito",
+      imagen: require("../../assets/images/avatar-5.jpg"),
+      redirect: "carrito"
+    },
+    {
+      id: 6,
       nombre: "Terminos y condiciones",
       imagen: require("../../assets/images/avatar-5.jpg"),
       redirect: "userData"
-    },
+    }
   ];
   return (
     <SafeAreaView
@@ -98,7 +102,10 @@ export default function CustomDrawerContent() {
                   marginLeft: 20,
                   paddingVertical: 8,
                 }}
-                onPress={() => navigation.navigate(item.redirect)}
+                onPress={() => {
+                  navigation.navigate(item.redirect)
+                  setValue(1)
+                }}
               >
                 <Image
                   style={{
@@ -128,6 +135,7 @@ export default function CustomDrawerContent() {
         onPress={() => {
           navigation.dispatch(DrawerActions.closeDrawer())
           navigation.navigate("login")
+          setValue(1)
         }}
         label="Cerrar sesion"
         labelStyle={{ color: "black", marginLeft: 58 }}

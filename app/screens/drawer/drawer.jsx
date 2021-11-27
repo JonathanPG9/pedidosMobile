@@ -7,6 +7,7 @@ import UserData from "../user/UserData"
 import Restaurante from "../restaurante/Restaurante"
 import RestaurantesFavoritos from "../restaurante/RestaurantesFavoritos"
 import Buy from '../restaurante/Buy';
+import Carrito  from "../carrito/Carrito"
 const Drawer = createDrawerNavigator();
 
 export default function drawer() {
@@ -22,12 +23,13 @@ export default function drawer() {
       }}
       drawerContent={() => <CustomDrawer />}
       >
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="search" component={Search} />
-        <Drawer.Screen name="userData" component={UserData} />
-        <Drawer.Screen name="Restaurante" component={Restaurante} />
-        <Drawer.Screen name="restaurantesFavoritos" component={RestaurantesFavoritos} />
-        <Drawer.Screen name="buyScreen" component={Buy} />
+        <Drawer.Screen name="Home" component={Home}/>
+        <Drawer.Screen name="search" component={Search}/>
+        <Drawer.Screen name="userData" component={UserData}/>
+        <Drawer.Screen name="Restaurante" component={Restaurante}/>
+        <Drawer.Screen name="restaurantesFavoritos" component={RestaurantesFavoritos}/>
+        <Drawer.Screen name="buyScreen" component={Buy}/>
+        <Drawer.Screen name="carrito" component={Carrito}/>
         </Drawer.Navigator>
   );
 }

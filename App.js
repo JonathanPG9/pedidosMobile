@@ -33,10 +33,10 @@ export default function App() {
   }, [])
 
   return (
-    <Context>
+    <NavigationContainer>
       {fontLoadead
         ?
-        <NavigationContainer>
+        <Context>
           <SafeAreaProvider>
             <Stack.Navigator>
               <Stack.Screen
@@ -68,7 +68,7 @@ export default function App() {
               />
             </Stack.Navigator>
           </SafeAreaProvider>
-        </NavigationContainer>
+        </Context>
         :
         <View>
           <Text>
@@ -76,6 +76,6 @@ export default function App() {
           </Text>
         </View>
       }
-    </Context>
+    </NavigationContainer>
   );
 }

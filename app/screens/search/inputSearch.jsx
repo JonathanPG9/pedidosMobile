@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { View, TouchableOpacity } from "react-native";
 import { Input, Icon } from 'react-native-elements';
-import { useNavigation } from '@react-navigation/native';
 import { Contexto } from "../../Context/Context";
 
 export default inputSearch = () => {
-  const navigation = useNavigation()
-  const { setCallKeyboard, callKeyboard } = useContext(Contexto)
+  const { setCallKeyboard, callKeyboard, navigation } = useContext(Contexto)
   return (
     <View
       style={{

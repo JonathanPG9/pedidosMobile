@@ -1,22 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, Platform, Dimensions, TextInput } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
 import { Contexto } from '../../Context/Context';
 const { width } = Dimensions.get("window");
 
-
-
 const Buy = ({ route }) => {
-  const [value, setValue] = useState(1)
-  const {carrito,setCarrito} = useContext(Contexto)
+  const { carrito, setCarrito,value,setValue,navigation } = useContext(Contexto)
   const { item, isFavorite } = route.params;
   const [alreadyBuy, setIsAlreadyBuy] = useState(false);
   const [comentario, setComentario] = useState("")
-  const navigation = useNavigation()
   const adding = (n) => {
     if (n === 15) return alert("Maximo de unidades")
     setValue(n + 1)
+    setIsAlreadyBuy(false)
   }
   const subs = (n) => {
     if (n === 1) return alert("Minimo de unidades")
@@ -29,23 +25,25 @@ const Buy = ({ route }) => {
   const submit = (producto) => {
     const Isrepeated = carrito.find(x => x.id === producto.id && x.nombreDePlato === producto.nombreDePlato && x.descripcion === producto.descripcion);
     producto.cantidad = value;
-    if(typeof Isrepeated !== "undefined") {
+    comentario.length ? producto.comentario = comentario : null;
+    if (typeof Isrepeated !== "undefined") {
       Isrepeated.cantidad += producto.cantidad;
       Isrepeated.precioTotal = Isrepeated.cantidad * Isrepeated.precio;
+      comentario.length ? Isrepeated.comentario = comentario : null;
+      delete Isrepeated.precio
       setCarrito([...new Set([...carrito, Isrepeated])])
       setIsAlreadyBuy(true)
       setValue(0)
-      console.log(carrito)
       return;
     }
     producto.precioTotal = producto.cantidad * producto.precio
-    setCarrito([...carrito,{...producto}])
+    delete producto.precio
+    setCarrito([...carrito, { ...producto }])
     setIsAlreadyBuy(true)
     setValue(0)
-    console.log(carrito)
   }
   const goToPay = () => {
-    navigation.navigate("Home")
+    navigation.navigate("carrito")
     setIsAlreadyBuy(false)
   }
   return (
@@ -154,8 +152,8 @@ const Buy = ({ route }) => {
               }}
             >
               <Text
-                onPress={() => subs(value)}
-                style={{ padding: 33 }}
+                onPress={() => value === 0 ? null : subs(value)}
+                style={{ padding: Platform.OS === "ios" ? 12 : 33 }}
               >
                 -
               </Text>
@@ -164,7 +162,7 @@ const Buy = ({ route }) => {
               </Text>
               <Text
                 onPress={() => adding(value)}
-                style={{ padding: 33 }}
+                style={{ padding: Platform.OS === "ios" ? 12 : 33 }}
               >
                 +
               </Text>
@@ -208,38 +206,38 @@ const Buy = ({ route }) => {
       </ScrollView>
       <View
         style={{ backgroundColor: "rgb(229,097,00)", }}
-        >
+      >
         {
-          !alreadyBuy ?
-          <Button
-          title={`Agregar pedido de $${item.precio * value}`}
-          containerStyle={{
-            marginTop: 10,
-            height: 45
-          }}
-          titleStyle={{
-            color: "white",
-            fontSize: 14,
-            letterSpacing: 1,
-          }}
-          onPress={() => submit(item)}
-          type="clear"
-        />
-        :
-        <Button
-        title={`Ir al carrito`}
-        containerStyle={{
-          marginTop: 10,
-          height: 45
-        }}
-        titleStyle={{
-          color: "white",
-          fontSize: 14,
-          letterSpacing: 1,
-        }}
-        onPress={() => goToPay()}
-        type="clear"
-      />
+          !alreadyBuy ? 
+            <Button
+              title={`Agregar pedido de $${item.precio * value}`}
+              containerStyle={{
+                marginTop: 10,
+                height: 45
+              }}
+              titleStyle={{
+                color: "white",
+                fontSize: 14,
+                letterSpacing: 1,
+              }}
+              onPress={() => submit(item)}
+              type="clear"
+            />
+            :
+            <Button
+              title={`Ir al carrito`}
+              containerStyle={{
+                marginTop: 10,
+                height: 45
+              }}
+              titleStyle={{
+                color: "white",
+                fontSize: 14,
+                letterSpacing: 1,
+              }}
+              onPress={() => goToPay()}
+              type="clear"
+            />
         }
       </View>
     </SafeAreaView>
