@@ -10,6 +10,7 @@ const Context = ({ children }) => {
   const [value, setValue] = useState(1)
   const [callKeyboard, setCallKeyboard] = useState(false)
   const [carrito,setCarrito] = useState([])
+  const [total,setTotal] = useState(0)
   const navigation = useNavigation()
   const logeando = (email, pass, fn,setErrorText) => {
     logueando.post({
@@ -57,7 +58,9 @@ const Context = ({ children }) => {
     carrito: carrito,
     value: value,
     setValue: setValue,
-    navigation: navigation
+    navigation: navigation,
+    total: total,
+    setTotal: setTotal
   }
   console.log(carrito)
 

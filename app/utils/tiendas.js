@@ -55,35 +55,35 @@ export const Tiendas = [{
     comidas: [{
         nombreDePlato: "Hamburguesa Doble Cheddar",
         precio: 100,
-        id: 1,
+        id: "laBirra1",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Hamburguesa Panceta y huevo",
         precio: 100,
-        id: 2,
+        id:"laBirra2",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Hamburguesa Vegana",
         precio: 100,
-        id: 3,
+        id:"laBirra3",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Hamburguesa Con Guacamole",
         precio: 100,
-        id: 4,
+        id:"laBirra4",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Hamburguesa Con Guacamole",
         precio: 100,
-        id:5,
+        id:"laBirra5",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       }
@@ -91,7 +91,7 @@ export const Tiendas = [{
       {
         nombreDePlato: "Hamburguesa Con Guacamole",
         precio: 100,
-        id:6,
+        id:"laBirra6",
         imgPlato: images.burger_restaurant_1,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       }
@@ -109,28 +109,28 @@ export const Tiendas = [{
     comidas: [{
         nombreDePlato: "Pizza Jamon y queso",
         precio: 100,
-        id: 1,
+        id: "elNapoles1",
         imgPlato: images.pizza_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Pizza Rucula",
         precio: 100,
-        id: 2,
+        id: "elNapoles2",
         imgPlato: images.pizza_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Pizza Fugazzeta",
         precio: 100,
-        id: 3,
+        id: "elNapoles3",
         imgPlato: images.pizza_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       },
       {
         nombreDePlato: "Pizza Fugazeta Rellena",
         precio: 100,
-        id: 4,
+        id: "elNapoles4",
         imgPlato: images.pizza_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
       }
@@ -142,40 +142,36 @@ export const Tiendas = [{
     rating: 4.8,
     categorias: "panchos",
     foto: images.hot_dog_restaurant,
-    nombre: "El paragua",
+    nombre: "El panchometro",
     descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
     barrio: "Palermo",
     comidas: [{
         nombreDePlato: "Pancho con cheddar",
         precio: 100,
-        id: 1,
+        id:"panchometro1",
         imgPlato: images.hot_dog_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Pancho clasico",
         precio: 100,
-        id: 2,
+        id:"panchometro2",
         imgPlato: images.hot_dog_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Pancho con lluvia de papas",
         precio: 100,
-        id: 3,
+        id:"panchometro3",
         imgPlato: images.hot_dog_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Pancho Gourmet",
         precio: 100,
-        id: 4,
+        id:"panchometro4",
         imgPlato: images.hot_dog_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       }
     ]
   },
@@ -185,40 +181,36 @@ export const Tiendas = [{
     rating: 4.8,
     categorias: "sushi",
     foto: images.japanese_restaurant,
-    nombre: "Japones",
+    nombre: "El Ponja",
     descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
     barrio: "Puerto Madero",
     comidas: [{
         nombreDePlato: "Sushi Uramaki",
         precio: 100,
-        id: 1,
+        id:"elPonja1",
         imgPlato: images.japanese_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Sushi Temaki",
         precio: 100,
-        id: 2,
+        id:"elPonja2",
         imgPlato: images.japanese_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Sushi Inari",
         precio: 100,
-        id: 3,
+        id:"elPonja3",
         imgPlato: images.japanese_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Sushi Maki",
         precio: 100,
-        id: 4,
+        id:"elPonja4",
         imgPlato: images.japanese_restaurant,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       }
     ]
   },
@@ -234,34 +226,30 @@ export const Tiendas = [{
     comidas: [{
         nombreDePlato: "Ravioles",
         precio: 100,
-        id: 1,
+        id:"elItaliano1",
         imgPlato: images.noodle_shop,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Spaghetti",
         precio: 100,
-        id: 2,
+        id:"elItaliano2",
         imgPlato: images.noodle_shop,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Macarrones",
         precio: 100,
-        id: 3,
+        id:"elItaliano3",
         imgPlato: images.noodle_shop,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Fusilli ",
         precio: 100,
-        id: 4,
+        id:"elItaliano4",
         imgPlato: images.noodle_shop,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       }
     ]
   },
@@ -277,34 +265,30 @@ export const Tiendas = [{
     comidas: [{
         nombreDePlato: "Helado chocolate",
         precio: 100,
-        id: 1,
+        id:"grido1",
         imgPlato: images.heladeria,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Helado Vainilla",
         precio: 100,
-        id: 2,
+        id:"grido2",
         imgPlato: images.heladeria,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Helado Frutilla",
         precio: 100,
-        id: 3,
+        id:"grido3",
         imgPlato: images.heladeria,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       },
       {
         nombreDePlato: "Helado Crema Americana",
         precio: 100,
-        id: 4,
+        id:"grido4",
         imgPlato: images.heladeria,
         descripcion: '"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
-
       }
     ]
   },
