@@ -2,14 +2,15 @@ import React, { useContext, useState } from 'react';
 import { Contexto } from '../../Context/Context';
 import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, FlatList, Dimensions,StyleSheet } from "react-native";
 import { Button } from 'react-native-elements';
-
+import CommentSection from './CommentSection';
 const { width } = Dimensions.get("window");
 
 const Carrito = () => {
   const { carrito, navigation,setCarrito,total,setTotal} = useContext(Contexto)
   const eliminar = (item) => {
-    const newCart = carrito.filter(x => x.id !== item.id)
-    setCarrito(newCart)
+    const newCart = carrito.filter(x => x.id !== item.id);
+    setCarrito(newCart);
+    setTotal(total - item.precioTotal);
   }
   return (
     <SafeAreaView
@@ -74,6 +75,7 @@ const Carrito = () => {
                             borderWidth:0.5,
                             top:30,
                             borderRadius:10,
+                            right: 24,
                           }}
                           titleStyle={{
                             color: "red",
@@ -83,6 +85,7 @@ const Carrito = () => {
                           onPress={() => eliminar(item)}
                           type="clear"
                         />
+                        <CommentSection/>
                       </View>
                     </View>
                   )

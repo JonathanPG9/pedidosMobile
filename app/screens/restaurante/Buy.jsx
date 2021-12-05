@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, Platform
 import { Button } from 'react-native-elements';
 import { Contexto } from '../../Context/Context';
 const { width } = Dimensions.get("window");
- 
+
 const Buy = ({ route }) => {
   const { carrito, setCarrito,value,setValue,navigation,setTotal,total} = useContext(Contexto)
   const { item, isFavorite } = route.params;
@@ -30,17 +30,18 @@ const Buy = ({ route }) => {
       Isrepeated.cantidad += producto.cantidad;
       Isrepeated.precioTotal = Isrepeated.cantidad * Isrepeated.precio;
       comentario.length ? Isrepeated.comentario = comentario : null;
-      setCarrito([...new Set([...carrito, Isrepeated])])
-      setIsAlreadyBuy(true)
-      setValue(0)
-      setTotal(total + Isrepeated.precioTotal)
+      setCarrito([...new Set([...carrito, Isrepeated])]);
+      setIsAlreadyBuy(true);
+      setValue(0);
+      setTotal(total + Isrepeated.precioTotal);
       return;
     }
-    producto.precioTotal = producto.cantidad * producto.precio
-    setTotal(total + producto.precioTotal)
-    setCarrito([...carrito, { ...producto }])
-    setIsAlreadyBuy(true)
-    setValue(0)
+    producto.precioTotal = producto.cantidad * producto.precio;
+    setTotal(total + producto.precioTotal);
+    setCarrito([...carrito, { ...producto }]);
+    setIsAlreadyBuy(true);
+    setValue(0);
+    return;
   }
   const goToPay = () => {
     navigation.navigate("carrito")
