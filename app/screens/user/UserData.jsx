@@ -1,10 +1,42 @@
 import React, { useState, useContext } from 'react';
 import { Contexto } from '../../Context/Context';
-import { View, SafeAreaView, Text, TouchableWithoutFeedback, Image, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TouchableWithoutFeedback, StyleSheet, ScrollView, Platform } from "react-native";
 import { Input } from 'react-native-elements';
 import { update } from '../../utils/fetching'
+import styled from 'styled-components/native'
 import ChangePass from './ChangePass';
 
+
+const KbCnt = styled.KeyboardAvoidingView`
+    width: 90%;
+    border-radius: 10px;
+    flex:${({platform}) =>  platform.OS === "ios" ? 0.80 : 0.91  };
+    background-color: #E3E4E5;
+`
+const SafeArea = styled.SafeAreaView `
+    flex: 1;
+    align-items: center; 
+    padding: 20px 0 30px 0;
+`
+
+const Img = styled.Image `
+    width: 72px;
+    height: 72px;
+    background-color: yellow;
+    border-radius: 100px;
+    margin-top:${({platform}) => platform.OS === "ios" ? `55px` : `1px`};
+`
+
+const PassBtn = styled.View`
+    flex: 0.1;
+    align-self: flex-start;
+    justify-content: center;
+    top: 20px;
+    left: 15px;
+    background-color: #E3E4E5;
+    border-radius: 20px;
+    padding: 5px;
+`
 export default UserData = () => {
   const { User, setUser } = useContext(Contexto)
   const { nombre, apellido, email, telefono } = User;
@@ -42,15 +74,8 @@ export default UserData = () => {
             setChangePass={setChangePass}
           />
           :
-          <SafeAreaView style={{ flex: 1, alignItems: "center", paddingVertical: 30 }}>
-            <Image
-              style={{
-                width: 72,
-                height: 72,
-                backgroundColor: 'yellow',
-                borderRadius: 100,
-                marginTop: Platform.OS === "ios" ? 55 : 1,
-              }}
+          <SafeArea>
+            <Img platform= {Platform}
               resizeMode="cover"
               source={{ uri: "https://i.pinimg.com/236x/f9/27/77/f927779d0f19649c681d9b5a0c365edd.jpg" }}
             />
@@ -73,13 +98,8 @@ export default UserData = () => {
             >
               Mis datos
             </Text>
-            <KeyboardAvoidingView
-              style={{
-                flex: Platform.OS === "ios" ? 0.80 : 0.91,
-                width: "90%",
-                borderRadius: 10,
-                backgroundColor: '#E3E4E5',
-              }}
+            <KbCnt
+              platform = {Platform}
               enabled
               behavior={Platform.OS === "ios" ? 'padding' : 'height'}
             >
@@ -97,10 +117,7 @@ export default UserData = () => {
                     placeholderTextColor="black"
                   />
                   <Input
-                    labelStyle={{
-                      fontSize: 12,
-                      marginTop: Platform.OS === "ios" ? 22 : 0,
-                    }}
+                    labelStyle={styles.inputStyle}
                     label="Apellido"
                     placeholder={User.apellido || ""}
                     placeholderTextColor="black"
@@ -108,10 +125,7 @@ export default UserData = () => {
                     value={changeApellido}
                   />
                   <Input
-                    labelStyle={{
-                      fontSize: 12,
-                      marginTop: Platform.OS === "ios" ? 22 : 0,
-                    }}
+                    labelStyle={styles.inputStyle}
                     placeholder={User.email || ""}
                     label="Correo electronico"
                     placeholderTextColor="black"
@@ -119,10 +133,7 @@ export default UserData = () => {
                     value={changeEmail}
                   />
                   <Input
-                    labelStyle={{
-                      fontSize: 12,
-                      marginTop: Platform.OS === "ios" ? 22 : 0,
-                    }}
+                    labelStyle={styles.inputStyle}
                     placeholder={`${User.telefono}` || ""}
                     label="Telefono"
                     placeholderTextColor="black"
@@ -131,21 +142,10 @@ export default UserData = () => {
                   />
                 </View>
               </ScrollView>
-            </KeyboardAvoidingView>
+            </KbCnt>
             <TouchableWithoutFeedback
             >
-              <View
-                style={{
-                  flex: 0.1,
-                  alignSelf: "flex-start",
-                  justifyContent: "center",
-                  top: 20,
-                  left: 15,
-                  backgroundColor: "#E3E4E5",
-                  borderRadius: 20,
-                  padding: 5
-                }}
-              >
+              <PassBtn>
                 {
                   changeNombre.length > 0 ||
                     changeApellido.length > 0 ||
@@ -163,11 +163,18 @@ export default UserData = () => {
                       Cambiar contraseña
                     </Text>
                 }
-              </View>
+              </PassBtn>
             </TouchableWithoutFeedback>
-          </SafeAreaView>
+          </SafeArea>
       }
     </>
   )
 
 }
+
+const styles = StyleSheet.create({
+  inputStyle: {
+    fontSize: 12,
+    marginTop: Platform.OS === "ios" ? 22 : 0,
+  }
+})
