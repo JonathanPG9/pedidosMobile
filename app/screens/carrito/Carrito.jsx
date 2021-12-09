@@ -85,7 +85,7 @@ const Carrito = () => {
                           onPress={() => eliminar(item)}
                           type="clear"
                         />
-                        <CommentSection/>
+                        <CommentSection comentario={item.comentario} />
                       </View>
                     </View>
                   )
