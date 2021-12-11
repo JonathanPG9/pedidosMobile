@@ -34,6 +34,7 @@ const Buy = ({ route }) => {
       setIsAlreadyBuy(true);
       setValue(0);
       setTotal(total + Isrepeated.precioTotal);
+      setComentario("")
       return;
     }
     producto.precioTotal = producto.cantidad * producto.precio;
@@ -41,6 +42,7 @@ const Buy = ({ route }) => {
     setCarrito([...carrito, { ...producto }]);
     setIsAlreadyBuy(true);
     setValue(0);
+    setComentario("")
     return;
   }
   const goToPay = () => {

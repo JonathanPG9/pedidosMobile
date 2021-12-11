@@ -28,15 +28,32 @@ const CommentSection = ({ comentario }) => {
         type="clear"
       />
       {
-        displayModal && <View style={{ position: "absolute", width: width / 1.20, borderRadius: 15, backgroundColor: "red", height: 115, right: -50, top: -50 }}>
+        displayModal && <View style={{
+          position: "absolute",
+          width: width / 1.18,
+          borderRadius: 15,
+          backgroundColor: "red",
+          height: 115,
+          right: -50, top: -50,
+          flexWrap:"wrap",
+          flex:1,
+          }}> 
+        <View
+        stlye={{flex:1}}
+        >
+        <Text
+          style={{ fontSize:16,paddingHorizontal:15,top:5,left:-3,}}
+        >
+          {comentario?.length > 1 ? comentario : "Sin comentarios"}
+        </Text>
+        </View>
         <Button
           title="X"
           containerStyle={{
-            flex:1,
-            width: 30,
             borderWidth: 0.5,
-            top: 0,
-            right: 0,
+            top:-13,
+            right: -8,
+            position: "absolute",
             borderRadius: 10,
             backgroundColor: "black",
           }}
@@ -47,13 +64,7 @@ const CommentSection = ({ comentario }) => {
           }}
           type="clear"
         onPress={() => setDisplayModal(false)}
-
         />
-        <Text
-          style={{ fontSize: 16, paddingRight:30,paddingLeft:10,top:5,flex:1, }}
-        >
-          {comentario?.length > 1 ? comentario : "Sin comentarios"}
-        </Text>
       </View>
       }
     </View>

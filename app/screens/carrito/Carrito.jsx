@@ -110,7 +110,7 @@ const Carrito = () => {
                 Precio total: ${total}
               </Text>
               <Button
-                title={`Comprar`}
+                title={`Pagar`}
                 containerStyle={{
                   width: 100,
                   top:-1,
