@@ -18,7 +18,7 @@ export default function CustomDrawerContent() {
   String.prototype.capitalize = function () {
     return this.charAt(0).toLocaleUpperCase() + this.slice(1)
   }
-  const { User,setValue,navigation } = useContext(Contexto)
+  const { User,setQuantity,navigation } = useContext(Contexto)
   const configuracion = [
     {
       id: 1,
@@ -104,7 +104,7 @@ export default function CustomDrawerContent() {
                 }}
                 onPress={() => {
                   navigation.navigate(item.redirect)
-                  setValue(1)
+                  setQuantity(1)
                 }}
               >
                 <Image
@@ -135,7 +135,7 @@ export default function CustomDrawerContent() {
         onPress={() => {
           navigation.dispatch(DrawerActions.closeDrawer())
           navigation.navigate("login")
-          setValue(1)
+          setQuantity(1)
         }}
         label="Cerrar sesion"
         labelStyle={{ color: "black", marginLeft: 58 }}

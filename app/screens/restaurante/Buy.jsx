@@ -5,43 +5,43 @@ import { Contexto } from '../../Context/Context';
 const { width } = Dimensions.get("window");
 
 const Buy = ({ route }) => {
-  const { carrito, setCarrito,value,setValue,navigation,setTotal,total} = useContext(Contexto)
+  const { carrito, setCarrito,quantity,setQuantity,navigation,setTotal,total} = useContext(Contexto)
   const { item, isFavorite } = route.params;
   const [alreadyBuy, setIsAlreadyBuy] = useState(false);
   const [comentario, setComentario] = useState("")
   const adding = (n) => {
     if (n === 15) return alert("Maximo de unidades")
-    setValue(n + 1)
+    setQuantity(n + 1)
     setIsAlreadyBuy(false)
   }
   const subs = (n) => {
     if (n === 1) return alert("Minimo de unidades")
-    setValue(n - 1)
+    setQuantity(n - 1)
   }
   const viewComment = (value) => {
     if (value.length > 130) return alert("maximo 130 caracteres")
     setComentario(value)
   }
   const submit = (producto) => {
-    const Isrepeated = carrito.find(x => x.id === producto.id && x.nombreDePlato === producto.nombreDePlato && x.descripcion === producto.descripcion);
-    producto.cantidad = value;
+    const Isrepeated = carrito.find(x => x.id === producto.id && x.title === producto.title && x.descripcion === producto.descripcion);
+    producto.quantity = quantity;
     comentario.length ? producto.comentario = comentario : null;
     if (typeof Isrepeated !== "undefined") {
-      Isrepeated.cantidad += producto.cantidad;
-      Isrepeated.precioTotal = Isrepeated.cantidad * Isrepeated.precio;
+      Isrepeated.quantity += producto.quantity;
+      Isrepeated.precioTotal = Isrepeated.quantity * Isrepeated.unit_price;
       comentario.length ? Isrepeated.comentario = comentario : null;
       setCarrito([...new Set([...carrito, Isrepeated])]);
       setIsAlreadyBuy(true);
-      setValue(0);
+      setQuantity(0);
       setTotal(total + Isrepeated.precioTotal);
       setComentario("")
       return;
     }
-    producto.precioTotal = producto.cantidad * producto.precio;
+    producto.precioTotal = producto.quantity * producto.unit_price;
     setTotal(total + producto.precioTotal);
     setCarrito([...carrito, { ...producto }]);
     setIsAlreadyBuy(true);
-    setValue(0);
+    setQuantity(0);
     setComentario("")
     return;
   }
@@ -91,12 +91,12 @@ const Buy = ({ route }) => {
             <Text
               style={{ left: 10, fontSize: 16, fontWeight: "400", letterSpacing: 0.4, }}
             >
-              {item.nombreDePlato}
+              {item.title}
             </Text>
             <Text
               style={{ left: 10, fontSize: 16, fontWeight: "400", letterSpacing: 0.4, }}
             >
-              ${item.precio}
+              ${item.unit_price}
             </Text>
             <Text
               style={{
@@ -155,16 +155,16 @@ const Buy = ({ route }) => {
               }}
             >
               <Text
-                onPress={() => value === 0 ? null : subs(value)}
+                onPress={() => quantity === 0 ? null : subs(quantity)}
                 style={{ padding: Platform.OS === "ios" ? 12 : 33 }}
               >
                 -
               </Text>
               <Text>
-                {value}
+                {quantity}
               </Text>
               <Text
-                onPress={() => adding(value)}
+                onPress={() => adding(quantity)}
                 style={{ padding: Platform.OS === "ios" ? 12 : 33 }}
               >
                 +
@@ -213,7 +213,7 @@ const Buy = ({ route }) => {
         {
           !alreadyBuy ? 
             <Button
-              title={`Agregar pedido de $${item.precio * value}`}
+              title={`Agregar pedido de $${item.unit_price * quantity}`}
               containerStyle={{
                 marginTop: 10,
                 height: 45
