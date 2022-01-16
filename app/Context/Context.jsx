@@ -7,9 +7,10 @@ export const Contexto = createContext()
 const Context = ({ children }) => {
   const [Usuario, setUsuario] = useState([])
   const [isLogged, setIsLogged] = useState()
-  const [value, setValue] = useState(1)
+  const [quantity, setQuantity] = useState(1)
   const [callKeyboard, setCallKeyboard] = useState(false)
   const [carrito,setCarrito] = useState([])
+  const [total,setTotal] = useState(0)
   const navigation = useNavigation()
   const logeando = (email, pass, fn,setErrorText) => {
     logueando.post({
@@ -25,6 +26,7 @@ const Context = ({ children }) => {
     })
     .catch(err => {
       setIsLogged(false)
+      console.log(err)
       setErrorText("Email y/o password invalidos")
     })
   }
@@ -34,7 +36,7 @@ const Context = ({ children }) => {
       password: pass,
       email: email,
       telefono: telefono,
-      edad: edad 
+      edad: edad
     })
     .then(data => {
       fn("login")
@@ -55,12 +57,12 @@ const Context = ({ children }) => {
     setCallKeyboard: setCallKeyboard,
     setCarrito: setCarrito,
     carrito: carrito,
-    value: value,
-    setValue: setValue,
-    navigation: navigation
+    quantity: quantity,
+    setQuantity: setQuantity,
+    navigation: navigation,
+    total: total,
+    setTotal: setTotal
   }
-  console.log(carrito)
-
   return (
     <Contexto.Provider value={context}>
       {children}
