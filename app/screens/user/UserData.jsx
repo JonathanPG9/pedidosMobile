@@ -1,25 +1,25 @@
 import React, { useState, useContext } from 'react';
 import { Contexto } from '../../Context/Context';
-import { View, Text, TouchableWithoutFeedback, StyleSheet, ScrollView, Platform } from "react-native";
+import { View, Text, TouchableWithoutFeedback, StyleSheet, ScrollView, Platform,SafeAreaView, KeyboardAvoidingView, Image } from "react-native";
 import { Input } from 'react-native-elements';
 import { update } from '../../utils/fetching'
 import styled from 'styled-components/native'
 import ChangePass from './ChangePass';
 
 
-const KbCnt = styled.KeyboardAvoidingView`
+const KbCnt = styled(KeyboardAvoidingView)`
     width: 90%;
     border-radius: 10px;
     flex:${({platform}) =>  platform.OS === "ios" ? 0.80 : 0.91  };
     background-color: #E3E4E5;
 `
-const SafeArea = styled.SafeAreaView `
+const SafeArea = styled(SafeAreaView) `
     flex: 1;
     align-items: center; 
     padding: 20px 0 30px 0;
 `
 
-const Img = styled.Image `
+const Img = styled(Image) `
     width: 72px;
     height: 72px;
     background-color: yellow;
@@ -27,7 +27,7 @@ const Img = styled.Image `
     margin-top:${({platform}) => platform.OS === "ios" ? `55px` : `1px`};
 `
 
-const PassBtn = styled.View`
+const PassBtn = styled(View)`
     flex: 0.1;
     align-self: flex-start;
     justify-content: center;
