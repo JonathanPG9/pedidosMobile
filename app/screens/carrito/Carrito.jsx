@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Contexto } from '../../Context/Context';
-import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, FlatList, Dimensions,StyleSheet } from "react-native";
+import { SafeAreaView, Text, View, Image, TouchableOpacity, ScrollView, Linking ,FlatList, Dimensions,StyleSheet } from "react-native";
 import { Button } from 'react-native-elements';
 import CommentSection from './CommentSection';
 const { width } = Dimensions.get("window");
@@ -11,6 +11,39 @@ const Carrito = () => {
     const newCart = carrito.filter(x => x.id !== item.id);
     setCarrito(newCart);
     setTotal(total - item.precioTotal);
+  }
+  const confirm = () => {
+    const items = carrito;
+    if(carrito.length > 1) {
+      for(let elem of items) {
+        delete elem.imgPlato;
+        delete elem.precioTotal;
+        delete elem.id
+        elem.description = elem.descripcion;
+        delete elem.descripcion
+      }
+    }
+    else {
+      delete items.imgPlato;
+      delete items.precioTotal;
+      delete items.id
+      items.description = items.descripcion;
+      delete items.descripcion
+    }
+    fetch("http://localhost:3000/api/meli/mercadopago", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(items)
+    })
+    .then(res => res.json())
+    .then(res => Linking.openURL(res.init_point))
+    .catch(err => console.log(err))
+    .finally(() => {
+      setCarrito([])
+    })
   }
   return (
     <SafeAreaView
@@ -51,10 +84,10 @@ const Carrito = () => {
                         }}
                       >
                         <Text style={styles.parrafo}>
-                          {item.nombreDePlato}
+                          {item.title}
                         </Text>
                         <Text style={styles.parrafo}>
-                          Cantidad: {item.cantidad}
+                          Cantidad: {item.quantity}
                         </Text>
                       </View>
                       <View
@@ -85,7 +118,7 @@ const Carrito = () => {
                           onPress={() => eliminar(item)}
                           type="clear"
                         />
-                        <CommentSection/>
+                        <CommentSection comentario={item.comentario} />
                       </View>
                     </View>
                   )
@@ -110,7 +143,7 @@ const Carrito = () => {
                 Precio total: ${total}
               </Text>
               <Button
-                title={`Comprar`}
+                title={`Pagar`}
                 containerStyle={{
                   width: 100,
                   top:-1,
@@ -121,7 +154,7 @@ const Carrito = () => {
                   fontSize: 14,
                   letterSpacing: 1,
                 }}
-                onPress={() => alert("Acabas de comprar" + " " + total)}
+                onPress={() =>  confirm()}
                 type="clear"
               /> 
               </View>
